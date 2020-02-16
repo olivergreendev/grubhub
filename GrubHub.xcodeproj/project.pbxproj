@@ -32,6 +32,7 @@
 		5E3A4C0F23F8743F008710B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E3A4C0E23F8743F008710B9 /* Main.storyboard */; };
 		5E3A4C2723F8F328008710B9 /* MenuTabTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A4C2623F8F328008710B9 /* MenuTabTableController.swift */; };
 		5E3A4C2923F8F454008710B9 /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A4C2823F8F454008710B9 /* CategoryButton.swift */; };
+		5E3A4C2B23F8FB02008710B9 /* TableSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A4C2A23F8FB02008710B9 /* TableSectionHeaderView.swift */; };
 		5E5345D523F3AF75009CF5B3 /* ItemCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5345D423F3AF75009CF5B3 /* ItemCellData.swift */; };
 		5E5345DA23F6505D009CF5B3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E05F15E23E757AA00824E3E /* MapKit.framework */; };
 		5E5FA86B23DCF021009C5504 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FA86A23DCF021009C5504 /* AppDelegate.swift */; };
@@ -109,6 +110,7 @@
 		5E3A4C0E23F8743F008710B9 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5E3A4C2623F8F328008710B9 /* MenuTabTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTabTableController.swift; sourceTree = "<group>"; };
 		5E3A4C2823F8F454008710B9 /* CategoryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
+		5E3A4C2A23F8FB02008710B9 /* TableSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionHeaderView.swift; sourceTree = "<group>"; };
 		5E5345D423F3AF75009CF5B3 /* ItemCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellData.swift; sourceTree = "<group>"; };
 		5E5345D623F65054009CF5B3 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E5FA86723DCF021009C5504 /* GrubHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrubHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,6 +233,7 @@
 				5E5345D423F3AF75009CF5B3 /* ItemCellData.swift */,
 				5E3A4C2823F8F454008710B9 /* CategoryButton.swift */,
 				5EE9053B23F3AAFD009C8FE7 /* CustomMenuItemCell.swift */,
+				5E3A4C2A23F8FB02008710B9 /* TableSectionHeaderView.swift */,
 			);
 			path = "Menu Tab";
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				5E6BD47923E3590C0010E2D2 /* SMSVerification.swift in Sources */,
 				5E05F14E23E4B4EF00824E3E /* CustomLottieAnimationView.swift in Sources */,
 				5E6BD46A23DFC2CA0010E2D2 /* SignUp.swift in Sources */,
+				5E3A4C2B23F8FB02008710B9 /* TableSectionHeaderView.swift in Sources */,
 				5E0DC8A223F10DA10069AB1B /* CustomCollectionCell.swift in Sources */,
 				5E6BD46823DEB6520010E2D2 /* HomeGateway.swift in Sources */,
 				5E05F16923EB80D400824E3E /* CustomMapPin.swift in Sources */,
