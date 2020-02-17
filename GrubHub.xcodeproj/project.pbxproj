@@ -22,7 +22,7 @@
 		5E05F17123ECE0AD00824E3E /* OrderTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05F17023ECE0AD00824E3E /* OrderTabController.swift */; };
 		5E05F17323ECE11400824E3E /* ThirdTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05F17223ECE11400824E3E /* ThirdTabController.swift */; };
 		5E05F17523ECE12900824E3E /* FourthTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05F17423ECE12900824E3E /* FourthTabController.swift */; };
-		5E05F17923EF67F900824E3E /* CategoryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05F17823EF67F900824E3E /* CategoryEntry.swift */; };
+		5E05F17923EF67F900824E3E /* CategoryCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05F17823EF67F900824E3E /* CategoryCellData.swift */; };
 		5E05F17B23EF690500824E3E /* CategoryEntryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05F17A23EF690500824E3E /* CategoryEntryAPI.swift */; };
 		5E0DC89D23F0E8780069AB1B /* CustomViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0DC89C23F0E8780069AB1B /* CustomViewSection.swift */; };
 		5E0DC8A223F10DA10069AB1B /* CustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0DC8A123F10DA10069AB1B /* CustomCollectionCell.swift */; };
@@ -101,7 +101,7 @@
 		5E05F17023ECE0AD00824E3E /* OrderTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTabController.swift; sourceTree = "<group>"; };
 		5E05F17223ECE11400824E3E /* ThirdTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTabController.swift; sourceTree = "<group>"; };
 		5E05F17423ECE12900824E3E /* FourthTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthTabController.swift; sourceTree = "<group>"; };
-		5E05F17823EF67F900824E3E /* CategoryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEntry.swift; sourceTree = "<group>"; };
+		5E05F17823EF67F900824E3E /* CategoryCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCellData.swift; sourceTree = "<group>"; };
 		5E05F17A23EF690500824E3E /* CategoryEntryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEntryAPI.swift; sourceTree = "<group>"; };
 		5E0DC89C23F0E8780069AB1B /* CustomViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewSection.swift; sourceTree = "<group>"; };
 		5E0DC8A123F10DA10069AB1B /* CustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionCell.swift; sourceTree = "<group>"; };
@@ -218,7 +218,6 @@
 				5E05F17023ECE0AD00824E3E /* OrderTabController.swift */,
 				5E05F17223ECE11400824E3E /* ThirdTabController.swift */,
 				5E05F17423ECE12900824E3E /* FourthTabController.swift */,
-				5E05F17823EF67F900824E3E /* CategoryEntry.swift */,
 				5E05F17A23EF690500824E3E /* CategoryEntryAPI.swift */,
 				5E0DC89C23F0E8780069AB1B /* CustomViewSection.swift */,
 			);
@@ -231,6 +230,7 @@
 				5EE9053723F3A3BA009C8FE7 /* Collection View */,
 				5E3A4C2623F8F328008710B9 /* MenuTabTableController.swift */,
 				5E5345D423F3AF75009CF5B3 /* ItemCellData.swift */,
+				5E05F17823EF67F900824E3E /* CategoryCellData.swift */,
 				5E3A4C2823F8F454008710B9 /* CategoryButton.swift */,
 				5EE9053B23F3AAFD009C8FE7 /* CustomMenuItemCell.swift */,
 				5E3A4C2A23F8FB02008710B9 /* TableSectionHeaderView.swift */,
@@ -627,7 +627,7 @@
 				5EE9053823F3A456009C8FE7 /* MenuTabController.swift in Sources */,
 				5E05F15A23E74D3D00824E3E /* Login.swift in Sources */,
 				5E5FA86B23DCF021009C5504 /* AppDelegate.swift in Sources */,
-				5E05F17923EF67F900824E3E /* CategoryEntry.swift in Sources */,
+				5E05F17923EF67F900824E3E /* CategoryCellData.swift in Sources */,
 				5E0DC8A623F239820069AB1B /* ItemCollectionViewCell.swift in Sources */,
 				5E3A4C2723F8F328008710B9 /* MenuTabTableController.swift in Sources */,
 				5EE9053C23F3AAFD009C8FE7 /* CustomMenuItemCell.swift in Sources */,

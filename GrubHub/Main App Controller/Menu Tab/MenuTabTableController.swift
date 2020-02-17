@@ -413,6 +413,15 @@ class CustomItemCell : UITableViewCell {
 
 class CustomCategoryCell: UITableViewCell {
     
+    let cell = [
+        CategoryItemData(title: "Coffee", image: "coffee-icon"),
+        CategoryItemData(title: "Pastries", image: "pastries-icon"),
+        CategoryItemData(title: "Soft Drinks", image: "soft-drinks-icon"),
+        CategoryItemData(title: "Tea", image: "default-flag"),
+        CategoryItemData(title: "Smoothies", image: "default-flag"),
+        CategoryItemData(title: "Muffins", image: "default-flag")
+    ]
+    
     private let cellView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
@@ -483,7 +492,7 @@ class CustomCategoryCell: UITableViewCell {
          }
          */
         
-        for n in 0...5 {
+        for n in 0...(cell.count - 1) {
             createMultipleButtons(stackView: stackView, count: n)
         }
     }
@@ -491,8 +500,8 @@ class CustomCategoryCell: UITableViewCell {
     private func createMultipleButtons(stackView: UIStackView, count: Int) -> UIView {
         
         let view = CategoryButton()
-        //view.title.text = categoryData[count].title
-        //view.image.image = UIImage(imageLiteralResourceName: categoryData[count].image!)
+        view.cellTitle.text = cell[count].title
+        view.cellImage.image = UIImage(imageLiteralResourceName: cell[count].image!)
         stackView.addArrangedSubview(view)
         return view
     }

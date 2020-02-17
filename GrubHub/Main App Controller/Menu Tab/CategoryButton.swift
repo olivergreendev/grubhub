@@ -10,7 +10,7 @@ import UIKit
 
 class CategoryButton: UIView {
         
-    let title: UILabel = {
+    let cellTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "CircularStd-Book", size: 14)
@@ -18,7 +18,7 @@ class CategoryButton: UIView {
         return label
     }()
     
-    let image: UIImageView = {
+    let cellImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
@@ -52,16 +52,16 @@ class CategoryButton: UIView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:)))
         self.addGestureRecognizer(tapGesture)
         
-        self.addSubview(title)
-        self.addSubview(image)
+        self.addSubview(cellTitle)
+        self.addSubview(cellImage)
         
         NSLayoutConstraint.activate([
-            title.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            title.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 25),
-            image.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            image.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -15),
-            image.widthAnchor.constraint(equalToConstant: 35),
-            image.heightAnchor.constraint(equalToConstant: 35)
+            cellTitle.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            cellTitle.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 25),
+            cellImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            cellImage.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -15),
+            cellImage.widthAnchor.constraint(equalToConstant: 35),
+            cellImage.heightAnchor.constraint(equalToConstant: 35)
         ])
     }
     

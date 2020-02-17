@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CategoryEntry {
+struct CategoryItemData {
     let title: String?
     let image: String?
 }

@@ -10,13 +10,13 @@ import Foundation
 
 class CategoryEntryAPI {
     
-    static func getCategoryData() -> [CategoryEntry] {
+    static func getCategoryData() -> [CategoryItemData] {
         let entry = [
-            CategoryEntry(title: "Coffee", image: "coffee-icon"),
-            CategoryEntry(title: "Pastries", image: "pastries-icon"),
-            CategoryEntry(title: "Soft Drinks", image: "soft-drinks-icon"),
-            CategoryEntry(title: "Tea", image: "default-flag"),
-            CategoryEntry(title: "Smoothies", image: "default-flag")
+            CategoryItemData(title: "Coffee", image: "coffee-icon"),
+            CategoryItemData(title: "Pastries", image: "pastries-icon"),
+            CategoryItemData(title: "Soft Drinks", image: "soft-drinks-icon"),
+            CategoryItemData(title: "Tea", image: "default-flag"),
+            CategoryItemData(title: "Smoothies", image: "default-flag")
         ]
         return entry
     }
