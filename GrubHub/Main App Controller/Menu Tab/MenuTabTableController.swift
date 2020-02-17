@@ -79,6 +79,33 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
         
     ]
     
+    let cellData = [
+        ["Categories", "Coffee", "Pastries", "Soft Drinks"],
+        [ItemData(itemName: "Espresso", itemPrice: "£2.50", itemDescription: "Espressos are the purest coffee experience you can get, and while the're not for everyone, it can be a truly singular drinking experience.", itemStrength: "coffee-strength-4"),
+        ItemData(itemName: "Mocha", itemPrice: "£2.50", itemDescription: "The perfect cure for a chocolate craving, this beverage is 60 ml of espresso, 50 ml of chocolate, and 30 ml of steamed milk.", itemStrength: "coffee-strength-3"),
+        ItemData(itemName: "Cappuccino", itemPrice: "£3.00", itemDescription: "This beloved drink is two ounces of espresso topped with another two ounces of steamed milk and finished with two ounces of foamed milk.", itemStrength: "coffee-strength-1"),
+        ItemData(itemName: "Latte", itemPrice: "£2.80", itemDescription: "This beverage is a blend of two ounces of espresso and ten ounces of steamed milk. It’s topped with the tiniest hint of foamed milk.", itemStrength: "coffee-strength-1"),
+        ItemData(itemName: "Flat White", itemPrice: "£3.20", itemDescription: "With two ounces of espresso to four ounces of steamed milk, this drink may be a little more palatable if you’re not a fan of strong coffee flavor.", itemStrength: "coffee-strength-2")],
+        [ItemData(itemName: "Danish Pastry", itemPrice: "1.80", itemDescription: "Part-baked and fully-baked danish pastries with a delicious & traditional filling.", itemStrength: "coffee-strength-1"), ItemData(itemName: "Butter Croissant", itemPrice: "1.00", itemDescription: "Available both fully-baked or part-baked – made with a high quantity of butter to deliver a really rich buttery taste.", itemStrength: "coffee-strength-1"), ItemData(itemName: "Mini Selections", itemPrice: "3.00", itemDescription: "Mini viennois & mini danish selections available as fully-baked or part-baked, delicious treats with morning coffee.", itemStrength: "coffee-strength-1"), ItemData(itemName: "Continental Confectionery", itemPrice: "3.20", itemDescription: "With consumers looking for new tastes and experiences this range of popular European confectionery will delight your customers and get them talking!", itemStrength: "coffee-strength-1")],
+        [ItemData(itemName: "Coca Cola", itemPrice: "1.80", itemDescription: "250ml traditional Coca Cola served in a glass bottle.", itemStrength: "coffee-strength-1"), ItemData(itemName: "Fanta: Orange", itemPrice: "1.40", itemDescription: "250ml Fanta Orange served in a glass bottle.", itemStrength: "coffee-strength-1"), ItemData(itemName: "Pepsi", itemPrice: "2.10", itemDescription: "250ml traditional Pepsi flavour served in a glass bottle", itemStrength: "coffee-strength-1")]
+    ]
+    
+    /*
+     data = [
+        ["Categories", "Coffee", "Pastries", "Soft Drinks"], //Section 0 - Category
+        [ItemData(Espresso), ItemData(Mocha), ItemData(Cappuccino)], //Section 1 - Coffee
+        [ItemData(), ItemData(), ItemData()], //Section 2 - Pastries
+        [ItemData(), ItemData(), ItemData()], //Section 3 - Soft Drinks
+     ]
+     */
+    
+    //MARK: TODO
+    /*
+     - Transform the above data array into a 2D array:-
+     - [1][0] would be section 1 (Coffee), item 0 (Espresso)
+     - [1][2] would be section 1 (Coffee), item 2 (Cappuccino)
+     */
+    
     override func viewWillLayoutSubviews() {
         
         var tabBarFrame = self.tabBarController?.tabBar.frame
@@ -99,10 +126,9 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
         view.backgroundColor = .defaultBackground
         
         setupNavigationBar()
+        setupTableLayout()
         customiseNavigationBar()
         customiseTabBar()
-        
-        setupTableLayout()
     }
     
     private func setupNavigationBar() {
@@ -154,7 +180,8 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
         mainTable.register(CustomCategoryCell.self, forCellReuseIdentifier: "categoryCellId")
         mainTable.register(CustomItemCell.self, forCellReuseIdentifier: "itemCellId")
         
-        view.addSubview(mainTable)
+        //view.addSubview(mainTable)
+        view.insertSubview(mainTable, belowSubview: headerShadowView)
         NSLayoutConstraint.activate([
             mainTable.topAnchor.constraint(equalTo: customHeader.bottomAnchor),
             mainTable.leftAnchor.constraint(equalTo: view.leftAnchor),
@@ -170,7 +197,8 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
             let cell = tableView.dequeueReusableCell(withIdentifier: "itemCellId") as! CustomItemCell
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
-            cell.data = self.data[indexPath.row]
+            //cell.data = self.data[indexPath.row]
+            cell.data = self.cellData[indexPath.section][indexPath.row] as! ItemData
             return cell
         }
         
@@ -204,11 +232,14 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return data.count
+        
         if section == 0 {
+            // If the section is the 'Category' section, then return one row
             return 1
         } else {
-            return data.count
+            // Otherwise return the number of arrays found under each section
+            // e.g. indexPath.section.child-count
+            return self.cellData[section].count
         }
     }
     
@@ -260,7 +291,9 @@ class CustomItemCell : UITableViewCell {
                 itemPrice.text = price
             }
             if let strength = data.itemStrength {
-                coffeeStrength.image = UIImage(imageLiteralResourceName: strength)
+                if strength != "nil" {
+                    coffeeStrength.image = UIImage(imageLiteralResourceName: strength)
+                }
             }
         }
     }

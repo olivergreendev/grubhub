@@ -19,7 +19,6 @@
 		5E05F16523E8FAD200824E3E /* CellEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05F16423E8FAD200824E3E /* CellEntry.swift */; };
 		5E05F16723E900B600824E3E /* CellEntryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05F16623E900B600824E3E /* CellEntryAPI.swift */; };
 		5E05F16923EB80D400824E3E /* CustomMapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05F16823EB80D400824E3E /* CustomMapPin.swift */; };
-		5E05F16D23ECD72100824E3E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05F16A23ECD6B300824E3E /* MainViewController.swift */; };
 		5E05F17123ECE0AD00824E3E /* OrderTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05F17023ECE0AD00824E3E /* OrderTabController.swift */; };
 		5E05F17323ECE11400824E3E /* ThirdTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05F17223ECE11400824E3E /* ThirdTabController.swift */; };
 		5E05F17523ECE12900824E3E /* FourthTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05F17423ECE12900824E3E /* FourthTabController.swift */; };
@@ -33,6 +32,7 @@
 		5E3A4C2723F8F328008710B9 /* MenuTabTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A4C2623F8F328008710B9 /* MenuTabTableController.swift */; };
 		5E3A4C2923F8F454008710B9 /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A4C2823F8F454008710B9 /* CategoryButton.swift */; };
 		5E3A4C2B23F8FB02008710B9 /* TableSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A4C2A23F8FB02008710B9 /* TableSectionHeaderView.swift */; };
+		5E3A4C2C23F9033F008710B9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05F16A23ECD6B300824E3E /* MainViewController.swift */; };
 		5E5345D523F3AF75009CF5B3 /* ItemCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5345D423F3AF75009CF5B3 /* ItemCellData.swift */; };
 		5E5345DA23F6505D009CF5B3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E05F15E23E757AA00824E3E /* MapKit.framework */; };
 		5E5FA86B23DCF021009C5504 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FA86A23DCF021009C5504 /* AppDelegate.swift */; };
@@ -617,6 +617,7 @@
 				5E6BD46E23E1142E0010E2D2 /* Extensions.swift in Sources */,
 				5E0DC89D23F0E8780069AB1B /* CustomViewSection.swift in Sources */,
 				5E05F17323ECE11400824E3E /* ThirdTabController.swift in Sources */,
+				5E3A4C2C23F9033F008710B9 /* MainViewController.swift in Sources */,
 				5E05F15623E509F600824E3E /* SMSVerificationSuccess.swift in Sources */,
 				5E05F16523E8FAD200824E3E /* CellEntry.swift in Sources */,
 				5E5FA89F23DD3533009C5504 /* PageCell.swift in Sources */,
@@ -643,7 +644,6 @@
 				5E5FA86D23DCF021009C5504 /* SceneDelegate.swift in Sources */,
 				5E3A4C2923F8F454008710B9 /* CategoryButton.swift in Sources */,
 				5E05F15D23E7533600824E3E /* MapViewController.swift in Sources */,
-				5E05F16D23ECD72100824E3E /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
