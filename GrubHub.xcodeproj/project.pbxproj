@@ -53,6 +53,7 @@
 		5E6BD47623E125230010E2D2 /* CircularStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6BD47223E125230010E2D2 /* CircularStd-Bold.otf */; };
 		5E6BD47723E125230010E2D2 /* CircularStd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6BD47323E125230010E2D2 /* CircularStd-Medium.otf */; };
 		5E6BD47923E3590C0010E2D2 /* SMSVerification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6BD47823E3590C0010E2D2 /* SMSVerification.swift */; };
+		5EAD468723FB956D003CC215 /* TestJSONData.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EAD468623FB956D003CC215 /* TestJSONData.json */; };
 		5EE9053823F3A456009C8FE7 /* MenuTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05F16E23ECE00400824E3E /* MenuTabController.swift */; };
 		5EE9053C23F3AAFD009C8FE7 /* CustomMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9053B23F3AAFD009C8FE7 /* CustomMenuItemCell.swift */; };
 		940E54D8F3A3F8CEEA7988E0 /* Pods_GrubHubTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB32EDA8298AEDE0D01324 /* Pods_GrubHubTests.framework */; };
@@ -137,6 +138,7 @@
 		5E6BD47223E125230010E2D2 /* CircularStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "CircularStd-Bold.otf"; path = "../../../Assets/Fonts/CircularStd-Bold.otf"; sourceTree = "<group>"; };
 		5E6BD47323E125230010E2D2 /* CircularStd-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "CircularStd-Medium.otf"; path = "../../../Assets/Fonts/CircularStd-Medium.otf"; sourceTree = "<group>"; };
 		5E6BD47823E3590C0010E2D2 /* SMSVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSVerification.swift; sourceTree = "<group>"; };
+		5EAD468623FB956D003CC215 /* TestJSONData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TestJSONData.json; path = ../../../../../../Downloads/TestJSONData.json; sourceTree = "<group>"; };
 		5EE9053B23F3AAFD009C8FE7 /* CustomMenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuItemCell.swift; sourceTree = "<group>"; };
 		A11B0865807DED51EFD93A35 /* Pods-GrubHub-GrubHubUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrubHub-GrubHubUITests.release.xcconfig"; path = "Target Support Files/Pods-GrubHub-GrubHubUITests/Pods-GrubHub-GrubHubUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A6F485B665757F9042D2D28D /* Pods_GrubHub_GrubHubUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GrubHub_GrubHubUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,6 +231,7 @@
 			children = (
 				5EE9053723F3A3BA009C8FE7 /* Collection View */,
 				5E3A4C2623F8F328008710B9 /* MenuTabTableController.swift */,
+				5EAD468623FB956D003CC215 /* TestJSONData.json */,
 				5E5345D423F3AF75009CF5B3 /* ItemCellData.swift */,
 				5E05F17823EF67F900824E3E /* CategoryCellData.swift */,
 				5E3A4C2823F8F454008710B9 /* CategoryButton.swift */,
@@ -481,6 +484,7 @@
 				5E5FA87423DCF026009C5504 /* Assets.xcassets in Resources */,
 				5E05F15423E505FD00824E3E /* loader-4.json in Resources */,
 				5E6BD47423E125230010E2D2 /* CircularStd-Book.otf in Resources */,
+				5EAD468723FB956D003CC215 /* TestJSONData.json in Resources */,
 				5E6BD47523E125230010E2D2 /* CircularStd-Black.otf in Resources */,
 				5E6BD47723E125230010E2D2 /* CircularStd-Medium.otf in Resources */,
 			);

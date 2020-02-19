@@ -40,6 +40,8 @@ class TableSectionHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        //backgroundColor = .red
+        
         setupView()
     }
     
@@ -50,13 +52,12 @@ class TableSectionHeaderView: UIView {
         titleHeaderView.addSubview(titleHeaderTitle)
         
         NSLayoutConstraint.activate([
-            titleViewContainer.centerXAnchor.constraint(equalTo: centerXAnchor),
             titleViewContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
             titleViewContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleViewContainer.heightAnchor.constraint(equalToConstant: 70),
+            titleViewContainer.bottomAnchor.constraint(equalTo: bottomAnchor),
             titleViewContainer.topAnchor.constraint(equalTo: topAnchor),
             
-            titleHeaderView.centerYAnchor.constraint(equalTo: titleViewContainer.centerYAnchor),
+            titleHeaderView.bottomAnchor.constraint(equalTo: titleViewContainer.bottomAnchor, constant: -20),
             titleHeaderView.rightAnchor.constraint(equalTo: titleHeaderTitle.rightAnchor, constant: 20),
             titleHeaderView.leftAnchor.constraint(equalTo: titleViewContainer.leftAnchor, constant: 10),
             titleHeaderView.heightAnchor.constraint(equalToConstant: 50),

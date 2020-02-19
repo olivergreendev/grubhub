@@ -44,6 +44,15 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
         return view
     }()
     
+    private let headerButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Hide", for: .normal)
+        button.backgroundColor = .red
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(hideSection), for: .touchUpInside)
+        return button
+    }()
+    
     private let tabBarShadowView: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = .white
@@ -64,31 +73,25 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.allowsSelection = true
+        tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
     
     //MARK: Temporary Data
     fileprivate let tableHeaders = ["Categories", "Coffee", "Pastries", "Soft Drinks"]
     
-    fileprivate let data = [
-        ItemData(itemName: "Espresso", itemPrice: "£2.50", itemDescription: "Espressos are the purest coffee experience you can get, and while the're not for everyone, it can be a truly singular drinking experience.", itemStrength: "coffee-strength-4"),
-        ItemData(itemName: "Mocha", itemPrice: "£2.50", itemDescription: "The perfect cure for a chocolate craving, this beverage is 60 ml of espresso, 50 ml of chocolate, and 30 ml of steamed milk.", itemStrength: "coffee-strength-3"),
-        ItemData(itemName: "Cappuccino", itemPrice: "£3.00", itemDescription: "This beloved drink is two ounces of espresso topped with another two ounces of steamed milk and finished with two ounces of foamed milk.", itemStrength: "coffee-strength-1"),
-        ItemData(itemName: "Latte", itemPrice: "£2.80", itemDescription: "This beverage is a blend of two ounces of espresso and ten ounces of steamed milk. It’s topped with the tiniest hint of foamed milk.", itemStrength: "coffee-strength-1"),
-        ItemData(itemName: "Flat White", itemPrice: "£3.20", itemDescription: "With two ounces of espresso to four ounces of steamed milk, this drink may be a little more palatable if you’re not a fan of strong coffee flavor.", itemStrength: "coffee-strength-2"),
-        
-    ]
-    
     let cellData = [
         ["Categories", "Coffee", "Pastries", "Soft Drinks"],
-        [ItemData(itemName: "Espresso", itemPrice: "£2.50", itemDescription: "Espressos are the purest coffee experience you can get, and while the're not for everyone, it can be a truly singular drinking experience.", itemStrength: "coffee-strength-4"),
-        ItemData(itemName: "Mocha", itemPrice: "£2.50", itemDescription: "The perfect cure for a chocolate craving, this beverage is 60 ml of espresso, 50 ml of chocolate, and 30 ml of steamed milk.", itemStrength: "coffee-strength-3"),
-        ItemData(itemName: "Cappuccino", itemPrice: "£3.00", itemDescription: "This beloved drink is two ounces of espresso topped with another two ounces of steamed milk and finished with two ounces of foamed milk.", itemStrength: "coffee-strength-1"),
-        ItemData(itemName: "Latte", itemPrice: "£2.80", itemDescription: "This beverage is a blend of two ounces of espresso and ten ounces of steamed milk. It’s topped with the tiniest hint of foamed milk.", itemStrength: "coffee-strength-1"),
-        ItemData(itemName: "Flat White", itemPrice: "£3.20", itemDescription: "With two ounces of espresso to four ounces of steamed milk, this drink may be a little more palatable if you’re not a fan of strong coffee flavor.", itemStrength: "coffee-strength-2")],
-        [ItemData(itemName: "Danish Pastry", itemPrice: "£1.80", itemDescription: "Part-baked and fully-baked danish pastries with a delicious & traditional filling.", itemStrength: "coffee-strength-1"), ItemData(itemName: "Butter Croissant", itemPrice: "£1.00", itemDescription: "Available both fully-baked or part-baked – made with a high quantity of butter to deliver a really rich buttery taste.", itemStrength: "coffee-strength-1"), ItemData(itemName: "Mini Selections", itemPrice: "£3.00", itemDescription: "Mini viennois & mini danish selections available as fully-baked or part-baked, delicious treats with morning coffee.", itemStrength: "coffee-strength-1"), ItemData(itemName: "Continental Confectionery", itemPrice: "£3.20", itemDescription: "With consumers looking for new tastes and experiences this range of popular European confectionery will delight your customers and get them talking!", itemStrength: "coffee-strength-1")],
-        [ItemData(itemName: "Coca Cola", itemPrice: "£1.80", itemDescription: "250ml traditional Coca Cola served in a glass bottle.", itemStrength: "coffee-strength-1"), ItemData(itemName: "Fanta: Orange", itemPrice: "£1.40", itemDescription: "250ml Fanta Orange served in a glass bottle.", itemStrength: "coffee-strength-1"), ItemData(itemName: "Pepsi", itemPrice: "£2.10", itemDescription: "250ml traditional Pepsi flavour served in a glass bottle", itemStrength: "coffee-strength-1")]
+        [CoffeeData(itemName: "Espresso", itemPrice: "£2.50", itemDescription: "Espressos are the purest coffee experience you can get, and while the're not for everyone, it can be a truly singular drinking experience.", itemStrength: "coffee-strength-4"),
+        CoffeeData(itemName: "Mocha", itemPrice: "£2.50", itemDescription: "The perfect cure for a chocolate craving, this beverage is 60 ml of espresso, 50 ml of chocolate, and 30 ml of steamed milk.", itemStrength: "coffee-strength-3"),
+        CoffeeData(itemName: "Cappuccino", itemPrice: "£3.00", itemDescription: "This beloved drink is two ounces of espresso topped with another two ounces of steamed milk and finished with two ounces of foamed milk.", itemStrength: "coffee-strength-1"),
+        CoffeeData(itemName: "Latte", itemPrice: "£2.80", itemDescription: "This beverage is a blend of two ounces of espresso and ten ounces of steamed milk. It’s topped with the tiniest hint of foamed milk.", itemStrength: "coffee-strength-1"),
+        CoffeeData(itemName: "Flat White", itemPrice: "£3.20", itemDescription: "With two ounces of espresso to four ounces of steamed milk, this drink may be a little more palatable if you’re not a fan of strong coffee flavor.", itemStrength: "coffee-strength-2")],
+        [CoffeeData(itemName: "Danish Pastry", itemPrice: "£1.80", itemDescription: "Part-baked and fully-baked danish pastries with a delicious & traditional filling.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Butter Croissant", itemPrice: "£1.00", itemDescription: "Available both fully-baked or part-baked – made with a high quantity of butter to deliver a really rich buttery taste.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Mini Selections", itemPrice: "£3.00", itemDescription: "Mini viennois & mini danish selections available as fully-baked or part-baked, delicious treats with morning coffee.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Continental Confectionery", itemPrice: "£3.20", itemDescription: "With consumers looking for new tastes and experiences this range of popular European confectionery will delight your customers!", itemStrength: "coffee-strength-1")],
+        [CoffeeData(itemName: "Coca Cola", itemPrice: "£1.80", itemDescription: "250ml traditional Coca Cola served in a glass bottle.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Fanta: Orange", itemPrice: "£1.40", itemDescription: "250ml Fanta Orange served in a glass bottle.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Pepsi", itemPrice: "£2.10", itemDescription: "250ml traditional Pepsi flavour served in a glass bottle", itemStrength: "coffee-strength-1")]
     ]
+    
+    var hideSections = false
     
     /*
      data = [
@@ -120,6 +123,11 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
         gradientLayer.frame = customHeader.bounds
     }
     
+    @objc func hideSection() {
+        hideSections = !hideSections
+        mainTable.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -129,6 +137,22 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
         setupTableLayout()
         customiseNavigationBar()
         customiseTabBar()
+        
+        /*
+        //JSON Testing
+        if let path = Bundle.main.path(forResource: "TestJSONData", ofType: "json") {
+        
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let person = jsonResult["person"] as? [Any] {
+                    //do stuff
+                }
+            } catch {
+                //error
+            }
+        }
+        */
     }
     
     private func setupNavigationBar() {
@@ -142,6 +166,12 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
         customHeader.addSubview(headerTitle)
         headerTitle.centerXAnchor.constraint(equalTo: customHeader.centerXAnchor).isActive = true
         headerTitle.centerYAnchor.constraint(equalTo: customHeader.centerYAnchor, constant: 5).isActive = true
+        
+        customHeader.addSubview(headerButton)
+        headerButton.centerYAnchor.constraint(equalTo: customHeader.centerYAnchor).isActive = true
+        headerButton.rightAnchor.constraint(equalTo: customHeader.rightAnchor, constant: -40).isActive = true
+        headerButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        headerButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         view.insertSubview(headerShadowView, belowSubview: customHeader)
         headerShadowView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -198,7 +228,7 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
             //cell.data = self.data[indexPath.row]
-            cell.data = self.cellData[indexPath.section][indexPath.row] as! ItemData
+            cell.data = self.cellData[indexPath.section][indexPath.row] as! CoffeeData
             return cell
         }
         
@@ -214,12 +244,6 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
         return tableHeaders.count
     }
     
-    /*
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return tableHeaders[section]
-    }
-     */
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = TableSectionHeaderView()
@@ -228,7 +252,13 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 70
+        
+        if section == 0 {
+            return 100
+        }
+        else {
+            return 70
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -278,7 +308,7 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
 class CustomItemCell : UITableViewCell {
     
     //MARK: Temporary Data
-    var data: ItemData? {
+    var data: CoffeeData? {
         didSet {
             guard let data = data else { return }
             if let name = data.itemName {

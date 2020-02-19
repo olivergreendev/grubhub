@@ -7,6 +7,7 @@ target 'GrubHub' do
   # Pods for GrubHub
   
   pod 'lottie-ios'
+  pod 'SwiftyJSON'
 
   target 'GrubHubTests' do
     inherit! :search_paths

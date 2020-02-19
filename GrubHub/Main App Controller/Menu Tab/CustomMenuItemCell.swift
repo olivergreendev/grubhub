@@ -10,7 +10,7 @@ import UIKit
 
 class CustomMenuItemCell: UITableViewCell {
     
-    var item: ItemData? {
+    var item: CoffeeData? {
         didSet {
             itemName.text = item?.itemName
             itemPrice.text = item?.itemPrice

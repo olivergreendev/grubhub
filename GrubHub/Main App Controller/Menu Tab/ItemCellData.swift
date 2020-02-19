@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct ItemData {
+struct CoffeeData {
     var itemName: String?
     var itemPrice: String?
     var itemDescription: String?
