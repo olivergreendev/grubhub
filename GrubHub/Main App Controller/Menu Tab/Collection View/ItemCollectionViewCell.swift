@@ -173,7 +173,7 @@ class ItemCollectionViewCell: UICollectionViewCell, UICollectionViewDataSource, 
     }
 }
 
-class CategoryItemCell: UICollectionViewCell, UICollectionViewDelegateFlowLayout {
+class TestTest: UICollectionViewCell, UICollectionViewDelegateFlowLayout {
     
     let testImage: UIImageView = {
         let imageView = UIImageView()

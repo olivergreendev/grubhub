@@ -14,3 +14,7 @@ struct CoffeeData {
     var itemDescription: String?
     var itemStrength: String?
 }
+
+//struct BasicData {}
+
+//struct AdvancedData {}

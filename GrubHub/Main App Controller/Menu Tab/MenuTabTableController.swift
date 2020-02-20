@@ -78,17 +78,20 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
     }()
     
     //MARK: Temporary Data
-    fileprivate let tableHeaders = ["Categories", "Coffee", "Pastries", "Soft Drinks"]
+    //fileprivate let tableHeaders = ["Categories", "Coffee", "Pastries", "Soft Drinks"]
     
-    let cellData = [
-        ["Categories", "Coffee", "Pastries", "Soft Drinks"],
+    fileprivate let cellData = [
+        ["Categories", "Coffee", "Pastries", "Soft Drinks", "Tea", "Smoothies", "Muffins"],
         [CoffeeData(itemName: "Espresso", itemPrice: "£2.50", itemDescription: "Espressos are the purest coffee experience you can get, and while the're not for everyone, it can be a truly singular drinking experience.", itemStrength: "coffee-strength-4"),
         CoffeeData(itemName: "Mocha", itemPrice: "£2.50", itemDescription: "The perfect cure for a chocolate craving, this beverage is 60 ml of espresso, 50 ml of chocolate, and 30 ml of steamed milk.", itemStrength: "coffee-strength-3"),
         CoffeeData(itemName: "Cappuccino", itemPrice: "£3.00", itemDescription: "This beloved drink is two ounces of espresso topped with another two ounces of steamed milk and finished with two ounces of foamed milk.", itemStrength: "coffee-strength-1"),
         CoffeeData(itemName: "Latte", itemPrice: "£2.80", itemDescription: "This beverage is a blend of two ounces of espresso and ten ounces of steamed milk. It’s topped with the tiniest hint of foamed milk.", itemStrength: "coffee-strength-1"),
         CoffeeData(itemName: "Flat White", itemPrice: "£3.20", itemDescription: "With two ounces of espresso to four ounces of steamed milk, this drink may be a little more palatable if you’re not a fan of strong coffee flavor.", itemStrength: "coffee-strength-2")],
         [CoffeeData(itemName: "Danish Pastry", itemPrice: "£1.80", itemDescription: "Part-baked and fully-baked danish pastries with a delicious & traditional filling.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Butter Croissant", itemPrice: "£1.00", itemDescription: "Available both fully-baked or part-baked – made with a high quantity of butter to deliver a really rich buttery taste.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Mini Selections", itemPrice: "£3.00", itemDescription: "Mini viennois & mini danish selections available as fully-baked or part-baked, delicious treats with morning coffee.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Continental Confectionery", itemPrice: "£3.20", itemDescription: "With consumers looking for new tastes and experiences this range of popular European confectionery will delight your customers!", itemStrength: "coffee-strength-1")],
-        [CoffeeData(itemName: "Coca Cola", itemPrice: "£1.80", itemDescription: "250ml traditional Coca Cola served in a glass bottle.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Fanta: Orange", itemPrice: "£1.40", itemDescription: "250ml Fanta Orange served in a glass bottle.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Pepsi", itemPrice: "£2.10", itemDescription: "250ml traditional Pepsi flavour served in a glass bottle", itemStrength: "coffee-strength-1")]
+        [CoffeeData(itemName: "Coca Cola", itemPrice: "£1.80", itemDescription: "250ml traditional Coca Cola served in a glass bottle.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Fanta: Orange", itemPrice: "£1.40", itemDescription: "250ml Fanta Orange served in a glass bottle.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Pepsi", itemPrice: "£2.10", itemDescription: "250ml traditional Pepsi flavour served in a glass bottle", itemStrength: "coffee-strength-1")],
+        [CoffeeData(itemName: "Green Tea", itemPrice: "£1.20", itemDescription: "", itemStrength: ""), CoffeeData(itemName: "Brown Tea", itemPrice: "£1.20", itemDescription: "", itemStrength: "")], //Tea
+        [CoffeeData(itemName: "Strawberry Supreme", itemPrice: "£2.10", itemDescription: "A delicious combination of milk, whipped cream and fresh strawberries.", itemStrength: ""), CoffeeData(itemName: "Raspbery Twist", itemPrice: "£2.40", itemDescription: "A delicious combination of milk, whipped cream and fresh raspberries.", itemStrength: ""), CoffeeData(itemName: "Lemon Buzz", itemPrice: "£2.50", itemDescription: "A tongue sizzling combination of milk, whipped cream, and freshly squeezed lemon juice and syrup.", itemStrength: "")], //Smoothies
+        [CoffeeData(itemName: "Blueberry Muffin", itemPrice: "£1.20", itemDescription: "", itemStrength: ""), CoffeeData(itemName: "Chocolate Muffin", itemPrice: "£1.40", itemDescription: "", itemStrength: "")] //Muffins
     ]
     
     var hideSections = false
@@ -207,8 +210,11 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
         mainTable.delegate = self
         mainTable.dataSource = self
         
-        mainTable.register(CustomCategoryCell.self, forCellReuseIdentifier: "categoryCellId")
-        mainTable.register(CustomItemCell.self, forCellReuseIdentifier: "itemCellId")
+        mainTable.register(CategoryItemCell.self, forCellReuseIdentifier: "categoryCellId")
+        
+        mainTable.register(CoffeeItemCell.self, forCellReuseIdentifier: "itemCellId")
+        mainTable.register(BasicItemCell.self, forCellReuseIdentifier: "basicCellId")
+        mainTable.register(AdvancedItemCell.self, forCellReuseIdentifier: "advancedCellId")
         
         //view.addSubview(mainTable)
         view.insertSubview(mainTable, belowSubview: headerShadowView)
@@ -223,8 +229,9 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
     //TableView Delegates
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        /*
         if indexPath.section != 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "itemCellId") as! CustomItemCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "itemCellId") as! CoffeeItemCell
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
             //cell.data = self.data[indexPath.row]
@@ -233,21 +240,63 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCellId") as! CustomCategoryCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCellId") as! CategoryItemCell
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
             return cell
         }
+         */
+        
+        if indexPath.section == 0 {
+            let cell: CategoryItemCell? = tableView.dequeueReusableCell(withIdentifier: "categoryCellId") as? CategoryItemCell
+            cell?.backgroundColor = .clear
+            cell?.selectionStyle = .none
+            return cell!
+        }
+        
+        else if indexPath.section == 1 {
+            let cell: CoffeeItemCell? = tableView.dequeueReusableCell(withIdentifier: "itemCellId") as? CoffeeItemCell
+            cell?.backgroundColor = .clear
+            cell?.selectionStyle = .none
+            cell?.data = self.cellData[indexPath.section][indexPath.row] as! CoffeeData
+            return cell!
+        }
+            
+        else if indexPath.section == 5 || indexPath.section == 2 {
+            let cell: AdvancedItemCell? = tableView.dequeueReusableCell(withIdentifier: "advancedCellId") as? AdvancedItemCell
+            cell?.backgroundColor = .clear
+            cell?.selectionStyle = .none
+            cell?.data = self.cellData[indexPath.section][indexPath.row] as! CoffeeData
+            return cell!
+        }
+        
+        else {
+            let cell: BasicItemCell? = tableView.dequeueReusableCell(withIdentifier: "basicCellId") as? BasicItemCell
+            cell?.backgroundColor = .clear
+            cell?.selectionStyle = .none
+            cell?.data = self.cellData[indexPath.section][indexPath.row] as! CoffeeData
+            return cell!
+        }
     }
     
+    //MARK: Cell Planning
+    //Section 0 = Categories (scroll view)
+    //Section 1 = Coffees (name, price, desc, strength image)
+    //Section 2 = Pastries (name, price, desc)
+    //Section 3 = Soft Drinks (name, price)
+    //Section 4 = Teas (name, price)
+    //Section 5 = Smoothies (name, description, price)
+    //Section 6 = Muffins (name, price)
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return tableHeaders.count
+        //return tableHeaders.count
+        return self.cellData[0].count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = TableSectionHeaderView()
-        headerView.titleHeaderTitle.text = tableHeaders[section]
+        headerView.titleHeaderTitle.text = self.cellData[0][section] as! String
         return headerView
     }
     
@@ -275,15 +324,20 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.section != 0 {
+        if indexPath.section != 0 && indexPath.section != 3 && indexPath.section != 4 && indexPath.section != 6 {
             tableView.beginUpdates()
             tableView.endUpdates()
+        }
+        
+        else if indexPath.section == 0 {
+            //hide the other sections
+            mainTable.reloadData()
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
-        //Return a height of 115 for the Category section
+        //Return a height of 130 for the Category section
         if indexPath.section == 0 {
             return 130
         }
@@ -305,7 +359,7 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
     }
 }
 
-class CustomItemCell : UITableViewCell {
+class CoffeeItemCell: UITableViewCell {
     
     //MARK: Temporary Data
     var data: CoffeeData? {
@@ -441,7 +495,7 @@ class CustomItemCell : UITableViewCell {
     }
 }
 
-class CustomCategoryCell: UITableViewCell {
+class CategoryItemCell: UITableViewCell {
     
     let cell = [
         CategoryItemData(title: "Coffee", image: "coffee-icon"),
@@ -540,6 +594,235 @@ class CustomCategoryCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+class BasicItemCell : UITableViewCell {
+    
+    //MARK: Temporary Data
+    var data: CoffeeData? {
+        didSet {
+            guard let data = data else { return }
+            if let name = data.itemName {
+                itemName.text = name
+            }
+            if let price = data.itemPrice {
+                itemPrice.text = price
+            }
+        }
+    }
+    
+    let cellView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.setCellStyle()
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    let itemName: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "CircularStd-Book", size: 15)
+        label.textColor = .black
+        //label.backgroundColor = .blue
+        return label
+    }()
+    
+    let itemPrice: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "CircularStd-Book", size: 15)
+        label.textColor = .gray
+        label.textAlignment = .right
+        //label.backgroundColor = .blue
+        return label
+    }()
+    
+    let addToOrder: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.image = #imageLiteral(resourceName: "add-to-basket")
+        return image
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        setupItemCell()
+    }
+    
+    func setupItemCell() {
+        
+        addSubview(cellView)
+        cellView.addSubview(itemName)
+        cellView.addSubview(itemPrice)
+        cellView.addSubview(addToOrder)
+        
+        NSLayoutConstraint.activate([
+            cellView.topAnchor.constraint(equalTo: topAnchor),
+            cellView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
+            cellView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            cellView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            
+            itemName.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 20),
+            itemName.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 20),
+            
+            addToOrder.centerYAnchor.constraint(equalTo: itemName.centerYAnchor),
+            addToOrder.rightAnchor.constraint(equalTo: cellView.rightAnchor, constant: -20),
+            
+            itemPrice.rightAnchor.constraint(equalTo: addToOrder.leftAnchor, constant: -20),
+            itemPrice.centerYAnchor.constraint(equalTo: addToOrder.centerYAnchor),
+        ])
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class AdvancedItemCell : UITableViewCell {
+    
+    //MARK: Temporary Data
+    var data: CoffeeData? {
+        didSet {
+            guard let data = data else { return }
+            if let name = data.itemName {
+                itemName.text = name
+            }
+            if let description = data.itemDescription {
+                itemDescription.text = description
+            }
+            if let price = data.itemPrice {
+                itemPrice.text = price
+            }
+        }
+    }
+    
+    let cellView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.setCellStyle()
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    let itemName: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "CircularStd-Book", size: 15)
+        label.textColor = .black
+        //label.backgroundColor = .blue
+        return label
+    }()
+    
+    let itemDescription: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "CircularStd-Book", size: 12)
+        label.textColor = .lightGray
+        label.numberOfLines = 0
+        //label.backgroundColor = .red
+        return label
+    }()
+    
+    let itemPrice: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "CircularStd-Book", size: 15)
+        label.textColor = .gray
+        label.textAlignment = .right
+        //label.backgroundColor = .blue
+        return label
+    }()
+    
+    let addToOrder: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.image = #imageLiteral(resourceName: "add-to-basket")
+        return image
+    }()
+    
+    let tempMask: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 6
+        view.layer.masksToBounds = false
+        return view
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        setupItemCell()
+    }
+    
+    func setupItemCell() {
+        
+        addSubview(cellView)
+        cellView.addSubview(itemName)
+        cellView.addSubview(itemDescription)
+        cellView.addSubview(itemPrice)
+        cellView.addSubview(addToOrder)
+        //Temp Mask
+        cellView.addSubview(tempMask)
+        
+        NSLayoutConstraint.activate([
+            cellView.topAnchor.constraint(equalTo: topAnchor),
+            cellView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
+            cellView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            cellView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            
+            itemName.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 20),
+            itemName.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 20),
+            
+            itemDescription.topAnchor.constraint(equalTo: itemName.bottomAnchor, constant: 10),
+            itemDescription.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 20),
+            itemDescription.rightAnchor.constraint(equalTo: cellView.rightAnchor, constant: -100),
+            
+            addToOrder.centerYAnchor.constraint(equalTo: itemName.centerYAnchor),
+            addToOrder.rightAnchor.constraint(equalTo: cellView.rightAnchor, constant: -20),
+            
+            itemPrice.rightAnchor.constraint(equalTo: addToOrder.leftAnchor, constant: -20),
+            itemPrice.centerYAnchor.constraint(equalTo: addToOrder.centerYAnchor),
+            
+            tempMask.heightAnchor.constraint(equalToConstant: 10),
+            tempMask.centerXAnchor.constraint(equalTo: cellView.centerXAnchor),
+            tempMask.leftAnchor.constraint(equalTo: cellView.leftAnchor),
+            tempMask.rightAnchor.constraint(equalTo: cellView.rightAnchor),
+            tempMask.bottomAnchor.constraint(equalTo: cellView.bottomAnchor)
+        ])
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 private func createMultipleButtons(stackView: UIStackView, count: Int) -> UIView {
