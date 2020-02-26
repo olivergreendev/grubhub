@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>294349854538-uqec6ap4jnnt021rcj30r0vblt56ovoq.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.294349854538-uqec6ap4jnnt021rcj30r0vblt56ovoq</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCFaonEXYr-l3zsEPCTBO6SK5LNJS1vato</string>
+	<key>GCM_SENDER_ID</key>
+	<string>294349854538</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.olivergreenapps.GrubHub</string>
+	<key>PROJECT_ID</key>
+	<string>grubhub-9dfdc</string>
+	<key>STORAGE_BUCKET</key>
+	<string>grubhub-9dfdc.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:294349854538:ios:15dd4dd74bc053b15fd3b3</string>
+	<key>DATABASE_URL</key>
+	<string>https://grubhub-9dfdc.firebaseio.com</string>
+</dict>
+</plist>

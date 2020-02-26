@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,6 +35,7 @@
 		5E3A4C2C23F9033F008710B9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05F16A23ECD6B300824E3E /* MainViewController.swift */; };
 		5E5345D523F3AF75009CF5B3 /* ItemCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5345D423F3AF75009CF5B3 /* ItemCellData.swift */; };
 		5E5345DA23F6505D009CF5B3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E05F15E23E757AA00824E3E /* MapKit.framework */; };
+		5E5BE7602401F7EF009D79CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E5BE75F2401F7EF009D79CF /* GoogleService-Info.plist */; };
 		5E5FA86B23DCF021009C5504 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FA86A23DCF021009C5504 /* AppDelegate.swift */; };
 		5E5FA86D23DCF021009C5504 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FA86C23DCF021009C5504 /* SceneDelegate.swift */; };
 		5E5FA86F23DCF021009C5504 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FA86E23DCF021009C5504 /* ViewController.swift */; };
@@ -56,9 +57,11 @@
 		5EAD468723FB956D003CC215 /* TestJSONData.json in Resources */ = {isa = PBXBuildFile; fileRef = 5EAD468623FB956D003CC215 /* TestJSONData.json */; };
 		5EE9053823F3A456009C8FE7 /* MenuTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E05F16E23ECE00400824E3E /* MenuTabController.swift */; };
 		5EE9053C23F3AAFD009C8FE7 /* CustomMenuItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE9053B23F3AAFD009C8FE7 /* CustomMenuItemCell.swift */; };
-		940E54D8F3A3F8CEEA7988E0 /* Pods_GrubHubTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51BB32EDA8298AEDE0D01324 /* Pods_GrubHubTests.framework */; };
-		96946DE43A949BD24989C47F /* Pods_GrubHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 083B0166FB34CA89779ED117 /* Pods_GrubHub.framework */; };
-		E3C94F6FEF3B4018D0F9F782 /* Pods_GrubHub_GrubHubUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F485B665757F9042D2D28D /* Pods_GrubHub_GrubHubUITests.framework */; };
+		5EE95B5C24060C5500B7B1F3 /* CoffeeItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE95B5B24060C5500B7B1F3 /* CoffeeItemCell.swift */; };
+		5EE95B5F240620B500B7B1F3 /* CoreDataGrubHub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5EE95B5D240620B500B7B1F3 /* CoreDataGrubHub.xcdatamodeld */; };
+		63C13D7909D94F8D6AA6DBA9 /* libPods-GrubHub-GrubHubUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13DC8F2A8B524374400829EF /* libPods-GrubHub-GrubHubUITests.a */; };
+		6A080411B3E1251F6929CCB6 /* libPods-GrubHubTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 762FC307AA54AC7C6FF274EB /* libPods-GrubHubTests.a */; };
+		AD38A269D073D04DECC74766 /* libPods-GrubHub.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C005B2CE2F8D401A3F15697 /* libPods-GrubHub.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,11 +82,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02189D6AD35C09F92C43B39C /* Pods-GrubHubTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrubHubTests.debug.xcconfig"; path = "Target Support Files/Pods-GrubHubTests/Pods-GrubHubTests.debug.xcconfig"; sourceTree = "<group>"; };
-		083B0166FB34CA89779ED117 /* Pods_GrubHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GrubHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D362F61BDBA602EB15D020D /* Pods-GrubHubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrubHubTests.release.xcconfig"; path = "Target Support Files/Pods-GrubHubTests/Pods-GrubHubTests.release.xcconfig"; sourceTree = "<group>"; };
-		395FB24FFF0FC2C876D13E43 /* Pods-GrubHub-GrubHubUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrubHub-GrubHubUITests.debug.xcconfig"; path = "Target Support Files/Pods-GrubHub-GrubHubUITests/Pods-GrubHub-GrubHubUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		51BB32EDA8298AEDE0D01324 /* Pods_GrubHubTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GrubHubTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EDFF00D91B0D4DDB1ED041C /* Pods-GrubHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrubHub.release.xcconfig"; path = "Target Support Files/Pods-GrubHub/Pods-GrubHub.release.xcconfig"; sourceTree = "<group>"; };
+		13DC8F2A8B524374400829EF /* libPods-GrubHub-GrubHubUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GrubHub-GrubHubUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		16C3A6078C87580E050AB25D /* Pods-GrubHub-GrubHubUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrubHub-GrubHubUITests.debug.xcconfig"; path = "Target Support Files/Pods-GrubHub-GrubHubUITests/Pods-GrubHub-GrubHubUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		177B29655C28F4E4AF88BA8A /* Pods-GrubHubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrubHubTests.release.xcconfig"; path = "Target Support Files/Pods-GrubHubTests/Pods-GrubHubTests.release.xcconfig"; sourceTree = "<group>"; };
+		28E11D89A80AE0402BAA4A14 /* Pods-GrubHubTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrubHubTests.debug.xcconfig"; path = "Target Support Files/Pods-GrubHubTests/Pods-GrubHubTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2C005B2CE2F8D401A3F15697 /* libPods-GrubHub.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GrubHub.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E05F14B23E4B33400824E3E /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loader.json; path = "../../../Assets/Lottie Animations/loader.json"; sourceTree = "<group>"; };
 		5E05F14D23E4B4EF00824E3E /* CustomLottieAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLottieAnimationView.swift; sourceTree = "<group>"; };
 		5E05F14F23E5017F00824E3E /* loader-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "loader-2.json"; path = "../../../Assets/Lottie Animations/loader-2.json"; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 		5E3A4C2A23F8FB02008710B9 /* TableSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionHeaderView.swift; sourceTree = "<group>"; };
 		5E5345D423F3AF75009CF5B3 /* ItemCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellData.swift; sourceTree = "<group>"; };
 		5E5345D623F65054009CF5B3 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E5BE75F2401F7EF009D79CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5E5FA86723DCF021009C5504 /* GrubHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrubHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E5FA86A23DCF021009C5504 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E5FA86C23DCF021009C5504 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,10 +145,11 @@
 		5E6BD47823E3590C0010E2D2 /* SMSVerification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSVerification.swift; sourceTree = "<group>"; };
 		5EAD468623FB956D003CC215 /* TestJSONData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = TestJSONData.json; path = ../../../../../../Downloads/TestJSONData.json; sourceTree = "<group>"; };
 		5EE9053B23F3AAFD009C8FE7 /* CustomMenuItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuItemCell.swift; sourceTree = "<group>"; };
-		A11B0865807DED51EFD93A35 /* Pods-GrubHub-GrubHubUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrubHub-GrubHubUITests.release.xcconfig"; path = "Target Support Files/Pods-GrubHub-GrubHubUITests/Pods-GrubHub-GrubHubUITests.release.xcconfig"; sourceTree = "<group>"; };
-		A6F485B665757F9042D2D28D /* Pods_GrubHub_GrubHubUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GrubHub_GrubHubUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCE29F3A86B0EAF1EECE03E0 /* Pods-GrubHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrubHub.release.xcconfig"; path = "Target Support Files/Pods-GrubHub/Pods-GrubHub.release.xcconfig"; sourceTree = "<group>"; };
-		E8800CFA683FCA69315B4408 /* Pods-GrubHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrubHub.debug.xcconfig"; path = "Target Support Files/Pods-GrubHub/Pods-GrubHub.debug.xcconfig"; sourceTree = "<group>"; };
+		5EE95B5B24060C5500B7B1F3 /* CoffeeItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeItemCell.swift; sourceTree = "<group>"; };
+		5EE95B5E240620B500B7B1F3 /* Core_Data_GrubHub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Core_Data_GrubHub.xcdatamodel; sourceTree = "<group>"; };
+		6D4C7274837409299CC9B6AB /* Pods-GrubHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrubHub.debug.xcconfig"; path = "Target Support Files/Pods-GrubHub/Pods-GrubHub.debug.xcconfig"; sourceTree = "<group>"; };
+		762FC307AA54AC7C6FF274EB /* libPods-GrubHubTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GrubHubTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3E00629D3272084C1329A76 /* Pods-GrubHub-GrubHubUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrubHub-GrubHubUITests.release.xcconfig"; path = "Target Support Files/Pods-GrubHub-GrubHubUITests/Pods-GrubHub-GrubHubUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,8 +157,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96946DE43A949BD24989C47F /* Pods_GrubHub.framework in Frameworks */,
 				5E5345DA23F6505D009CF5B3 /* MapKit.framework in Frameworks */,
+				AD38A269D073D04DECC74766 /* libPods-GrubHub.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,7 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				940E54D8F3A3F8CEEA7988E0 /* Pods_GrubHubTests.framework in Frameworks */,
+				6A080411B3E1251F6929CCB6 /* libPods-GrubHubTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,7 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3C94F6FEF3B4018D0F9F782 /* Pods_GrubHub_GrubHubUITests.framework in Frameworks */,
+				63C13D7909D94F8D6AA6DBA9 /* libPods-GrubHub-GrubHubUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,12 +184,12 @@
 		2A92522E4DE90A4AE76CC81E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E8800CFA683FCA69315B4408 /* Pods-GrubHub.debug.xcconfig */,
-				BCE29F3A86B0EAF1EECE03E0 /* Pods-GrubHub.release.xcconfig */,
-				395FB24FFF0FC2C876D13E43 /* Pods-GrubHub-GrubHubUITests.debug.xcconfig */,
-				A11B0865807DED51EFD93A35 /* Pods-GrubHub-GrubHubUITests.release.xcconfig */,
-				02189D6AD35C09F92C43B39C /* Pods-GrubHubTests.debug.xcconfig */,
-				2D362F61BDBA602EB15D020D /* Pods-GrubHubTests.release.xcconfig */,
+				6D4C7274837409299CC9B6AB /* Pods-GrubHub.debug.xcconfig */,
+				0EDFF00D91B0D4DDB1ED041C /* Pods-GrubHub.release.xcconfig */,
+				16C3A6078C87580E050AB25D /* Pods-GrubHub-GrubHubUITests.debug.xcconfig */,
+				C3E00629D3272084C1329A76 /* Pods-GrubHub-GrubHubUITests.release.xcconfig */,
+				28E11D89A80AE0402BAA4A14 /* Pods-GrubHubTests.debug.xcconfig */,
+				177B29655C28F4E4AF88BA8A /* Pods-GrubHubTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -237,6 +243,7 @@
 				5E3A4C2823F8F454008710B9 /* CategoryButton.swift */,
 				5EE9053B23F3AAFD009C8FE7 /* CustomMenuItemCell.swift */,
 				5E3A4C2A23F8FB02008710B9 /* TableSectionHeaderView.swift */,
+				5EE95B5B24060C5500B7B1F3 /* CoffeeItemCell.swift */,
 			);
 			path = "Menu Tab";
 			sourceTree = "<group>";
@@ -275,10 +282,12 @@
 				5E5FA8A423DE8B7C009C5504 /* Onboarding */,
 				5E5FA86E23DCF021009C5504 /* ViewController.swift */,
 				5E6BD46D23E1142E0010E2D2 /* Extensions.swift */,
+				5E5BE75F2401F7EF009D79CF /* GoogleService-Info.plist */,
 				5E5FA87823DCF026009C5504 /* Info.plist */,
 				5E5FA87323DCF026009C5504 /* Assets.xcassets */,
 				5E5FA87523DCF026009C5504 /* LaunchScreen.storyboard */,
 				5E3A4C0E23F8743F008710B9 /* Main.storyboard */,
+				5EE95B5D240620B500B7B1F3 /* CoreDataGrubHub.xcdatamodeld */,
 			);
 			path = GrubHub;
 			sourceTree = "<group>";
@@ -359,9 +368,9 @@
 			children = (
 				5E5345D623F65054009CF5B3 /* Lottie.framework */,
 				5E05F15E23E757AA00824E3E /* MapKit.framework */,
-				083B0166FB34CA89779ED117 /* Pods_GrubHub.framework */,
-				A6F485B665757F9042D2D28D /* Pods_GrubHub_GrubHubUITests.framework */,
-				51BB32EDA8298AEDE0D01324 /* Pods_GrubHubTests.framework */,
+				2C005B2CE2F8D401A3F15697 /* libPods-GrubHub.a */,
+				13DC8F2A8B524374400829EF /* libPods-GrubHub-GrubHubUITests.a */,
+				762FC307AA54AC7C6FF274EB /* libPods-GrubHubTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -373,11 +382,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E5FA89123DCF026009C5504 /* Build configuration list for PBXNativeTarget "GrubHub" */;
 			buildPhases = (
-				7CCA559EFA60AB14B525BC0E /* [CP] Check Pods Manifest.lock */,
+				D6E7660672B47B21ED471F78 /* [CP] Check Pods Manifest.lock */,
 				5E5FA86323DCF021009C5504 /* Sources */,
 				5E5FA86423DCF021009C5504 /* Frameworks */,
 				5E5FA86523DCF021009C5504 /* Resources */,
-				620EF54A44AD448012109684 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -392,7 +400,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E5FA89423DCF026009C5504 /* Build configuration list for PBXNativeTarget "GrubHubTests" */;
 			buildPhases = (
-				01C97AD70ABE47C71FF63CFD /* [CP] Check Pods Manifest.lock */,
+				1BC090F407046A63E0EAD2B3 /* [CP] Check Pods Manifest.lock */,
 				5E5FA87923DCF026009C5504 /* Sources */,
 				5E5FA87A23DCF026009C5504 /* Frameworks */,
 				5E5FA87B23DCF026009C5504 /* Resources */,
@@ -411,11 +419,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E5FA89723DCF026009C5504 /* Build configuration list for PBXNativeTarget "GrubHubUITests" */;
 			buildPhases = (
-				6015153E92410FADCADD1768 /* [CP] Check Pods Manifest.lock */,
+				9CC067C7F10029C0102034E9 /* [CP] Check Pods Manifest.lock */,
 				5E5FA88423DCF026009C5504 /* Sources */,
 				5E5FA88523DCF026009C5504 /* Frameworks */,
 				5E5FA88623DCF026009C5504 /* Resources */,
-				70D1171207A4091E51352525 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -475,6 +482,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E5BE7602401F7EF009D79CF /* GoogleService-Info.plist in Resources */,
 				5E6BD47623E125230010E2D2 /* CircularStd-Bold.otf in Resources */,
 				5E05F15223E5036200824E3E /* loader-3.json in Resources */,
 				5E05F15023E5018000824E3E /* loader-2.json in Resources */,
@@ -507,7 +515,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		01C97AD70ABE47C71FF63CFD /* [CP] Check Pods Manifest.lock */ = {
+		1BC090F407046A63E0EAD2B3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -529,7 +537,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6015153E92410FADCADD1768 /* [CP] Check Pods Manifest.lock */ = {
+		9CC067C7F10029C0102034E9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -551,41 +559,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		620EF54A44AD448012109684 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GrubHub/Pods-GrubHub-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GrubHub/Pods-GrubHub-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GrubHub/Pods-GrubHub-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		70D1171207A4091E51352525 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GrubHub-GrubHubUITests/Pods-GrubHub-GrubHubUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GrubHub-GrubHubUITests/Pods-GrubHub-GrubHubUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GrubHub-GrubHubUITests/Pods-GrubHub-GrubHubUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7CCA559EFA60AB14B525BC0E /* [CP] Check Pods Manifest.lock */ = {
+		D6E7660672B47B21ED471F78 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -621,6 +595,7 @@
 				5E6BD46E23E1142E0010E2D2 /* Extensions.swift in Sources */,
 				5E0DC89D23F0E8780069AB1B /* CustomViewSection.swift in Sources */,
 				5E05F17323ECE11400824E3E /* ThirdTabController.swift in Sources */,
+				5EE95B5C24060C5500B7B1F3 /* CoffeeItemCell.swift in Sources */,
 				5E3A4C2C23F9033F008710B9 /* MainViewController.swift in Sources */,
 				5E05F15623E509F600824E3E /* SMSVerificationSuccess.swift in Sources */,
 				5E05F16523E8FAD200824E3E /* CellEntry.swift in Sources */,
@@ -639,6 +614,7 @@
 				5E0DC8A423F110BE0069AB1B /* CustomCellData.swift in Sources */,
 				5E05F17523ECE12900824E3E /* FourthTabController.swift in Sources */,
 				5E6BD47923E3590C0010E2D2 /* SMSVerification.swift in Sources */,
+				5EE95B5F240620B500B7B1F3 /* CoreDataGrubHub.xcdatamodeld in Sources */,
 				5E05F14E23E4B4EF00824E3E /* CustomLottieAnimationView.swift in Sources */,
 				5E6BD46A23DFC2CA0010E2D2 /* SignUp.swift in Sources */,
 				5E3A4C2B23F8FB02008710B9 /* TableSectionHeaderView.swift in Sources */,
@@ -810,7 +786,7 @@
 		};
 		5E5FA89223DCF026009C5504 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8800CFA683FCA69315B4408 /* Pods-GrubHub.debug.xcconfig */;
+			baseConfigurationReference = 6D4C7274837409299CC9B6AB /* Pods-GrubHub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -830,7 +806,7 @@
 		};
 		5E5FA89323DCF026009C5504 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BCE29F3A86B0EAF1EECE03E0 /* Pods-GrubHub.release.xcconfig */;
+			baseConfigurationReference = 0EDFF00D91B0D4DDB1ED041C /* Pods-GrubHub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -850,7 +826,7 @@
 		};
 		5E5FA89523DCF026009C5504 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 02189D6AD35C09F92C43B39C /* Pods-GrubHubTests.debug.xcconfig */;
+			baseConfigurationReference = 28E11D89A80AE0402BAA4A14 /* Pods-GrubHubTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -872,7 +848,7 @@
 		};
 		5E5FA89623DCF026009C5504 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D362F61BDBA602EB15D020D /* Pods-GrubHubTests.release.xcconfig */;
+			baseConfigurationReference = 177B29655C28F4E4AF88BA8A /* Pods-GrubHubTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -894,7 +870,7 @@
 		};
 		5E5FA89823DCF026009C5504 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 395FB24FFF0FC2C876D13E43 /* Pods-GrubHub-GrubHubUITests.debug.xcconfig */;
+			baseConfigurationReference = 16C3A6078C87580E050AB25D /* Pods-GrubHub-GrubHubUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -914,7 +890,7 @@
 		};
 		5E5FA89923DCF026009C5504 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A11B0865807DED51EFD93A35 /* Pods-GrubHub-GrubHubUITests.release.xcconfig */;
+			baseConfigurationReference = C3E00629D3272084C1329A76 /* Pods-GrubHub-GrubHubUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -972,6 +948,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5EE95B5D240620B500B7B1F3 /* CoreDataGrubHub.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5EE95B5E240620B500B7B1F3 /* Core_Data_GrubHub.xcdatamodel */,
+			);
+			currentVersion = 5EE95B5E240620B500B7B1F3 /* Core_Data_GrubHub.xcdatamodel */;
+			path = CoreDataGrubHub.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5E5FA85F23DCF021009C5504 /* Project object */;
 }

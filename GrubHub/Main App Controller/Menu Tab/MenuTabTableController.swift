@@ -7,6 +7,14 @@
 //
 
 import UIKit
+import FirebaseDatabase
+
+extension MenuTabTableController: AddToOrderProtocol {
+    
+    func onClickCell(index: Int) {
+        print("\(index) is clicked")
+    }
+}
 
 class MenuTabTableController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -50,6 +58,7 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
         button.backgroundColor = .red
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(hideSection), for: .touchUpInside)
+        button.isHidden = true
         return button
     }()
     
@@ -96,6 +105,18 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
     
     var hideSections = false
     
+    var ref: DatabaseReference!
+    var databaseHandle: DatabaseHandle!
+    
+    var sections = [String]()
+    var rows = [String]()
+    
+    var emptyDict: [String: String] = [:]
+    
+    // ["Espresso": [2: 20]]
+    // 2 Espressos, at price '10' each
+    static var basket: [String: [Int: Int]] = [:]
+    
     /*
      data = [
         ["Categories", "Coffee", "Pastries", "Soft Drinks"], //Section 0 - Category
@@ -126,36 +147,85 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
         gradientLayer.frame = customHeader.bounds
     }
     
-    @objc func hideSection() {
-        hideSections = !hideSections
-        mainTable.reloadData()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .defaultBackground
         
+        //initFirebase()
+        
         setupNavigationBar()
         setupTableLayout()
         customiseNavigationBar()
         customiseTabBar()
+    }
+    
+    private func initFirebase() {
+    
+        //Reference the Firebase Database
+        ref = Database.database().reference()
+        
+        //Get the sections from the database
+        ref.child("categories").observe(.value) { (snapshot) in
+            let info = snapshot.value as! NSDictionary
+            //self.sections = info.allKeys as! [String]
+            
+            //self.emptyDict = info as! Dictionary<String, String>
+            
+            for child in snapshot.children.allObjects as! [DataSnapshot] {
+                //print("Child Keys: \(child.key)")
+                //print("\(child.childSnapshot(forPath: ""))")
+                self.sections.append(child.key)
+                for nestedChild in child.children.allObjects as! [DataSnapshot] {
+                    //print("Nested Child Keys: \(nestedChild.key)")
+                    self.rows.append(nestedChild.key)
+                }
+            }
+            
+            self.mainTable.reloadData()
+            //print(self.sections)
+            //print(self.rows)
+        }
+        
+        //Get the rows from the database
+        ref.child("categories").child("Smoothies").observe(.value) { (snapshot) in
+            let info = snapshot.value as! NSDictionary
+            self.rows = info.allKeys as! [String]
+            self.mainTable.reloadData()
+            //print(self.rows)
+        }
         
         /*
-        //JSON Testing
-        if let path = Bundle.main.path(forResource: "TestJSONData", ofType: "json") {
+        // Write Data
+        //ref.child("categories/coffee/Oliver").setValue("Green")
         
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let person = jsonResult["person"] as? [Any] {
-                    //do stuff
-                }
-            } catch {
-                //error
-            }
+        // Read Data
+        self.ref.child("categories/coffee/cappuccino/description").observeSingleEvent(of: .value) { (snapshot) in
+            let description = snapshot.value as? String
+            //print(description)
         }
-        */
+        
+        self.ref.child("categories/coffee/cappuccino").observeSingleEvent(of: .value) { (snapshot) in
+            let data = snapshot.value as? [String:Any]
+            //print(data)
+        }
+        
+        // Observe Data Changes
+        self.databaseHandle = self.ref.child("categories/coffee").observe(.childAdded) { (snapshot) in
+            let addition = snapshot.value
+            //print(addition)
+        }
+        
+        self.databaseHandle = self.ref.child("categories/coffee").observe(.childChanged) { (snapshot) in
+            let change = snapshot.value
+            //print(change)
+        }
+         */
+    }
+    
+    @objc func hideSection() {
+        hideSections = !hideSections
+        mainTable.reloadData()
     }
     
     private func setupNavigationBar() {
@@ -229,23 +299,11 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
     //TableView Delegates
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        /*
-        if indexPath.section != 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "itemCellId") as! CoffeeItemCell
-            cell.backgroundColor = .clear
-            cell.selectionStyle = .none
-            //cell.data = self.data[indexPath.row]
-            cell.data = self.cellData[indexPath.section][indexPath.row] as! CoffeeData
-            return cell
-        }
-        
-        else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCellId") as! CategoryItemCell
-            cell.backgroundColor = .clear
-            cell.selectionStyle = .none
-            return cell
-        }
-         */
+//        let cell: BasicItemCell? = tableView.dequeueReusableCell(withIdentifier: "basicCellId") as? BasicItemCell
+//        cell?.backgroundColor = .clear
+//        cell?.selectionStyle = .none
+//        //cell?.data = self.cellData[indexPath.section][indexPath.row] as! CoffeeData
+//        return cell!
         
         if indexPath.section == 0 {
             let cell: CategoryItemCell? = tableView.dequeueReusableCell(withIdentifier: "categoryCellId") as? CategoryItemCell
@@ -254,11 +312,13 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
             return cell!
         }
         
-        else if indexPath.section == 1 {
+        if indexPath.section == 1 {
             let cell: CoffeeItemCell? = tableView.dequeueReusableCell(withIdentifier: "itemCellId") as? CoffeeItemCell
             cell?.backgroundColor = .clear
             cell?.selectionStyle = .none
             cell?.data = self.cellData[indexPath.section][indexPath.row] as! CoffeeData
+            cell?.cellDelegate = self
+            cell?.index = indexPath
             return cell!
         }
             
@@ -274,7 +334,9 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
             let cell: BasicItemCell? = tableView.dequeueReusableCell(withIdentifier: "basicCellId") as? BasicItemCell
             cell?.backgroundColor = .clear
             cell?.selectionStyle = .none
+            cell?.contentView.isUserInteractionEnabled = false
             cell?.data = self.cellData[indexPath.section][indexPath.row] as! CoffeeData
+            cell?.delegate = self
             return cell!
         }
     }
@@ -290,13 +352,17 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
     
     func numberOfSections(in tableView: UITableView) -> Int {
         //return tableHeaders.count
+       
         return self.cellData[0].count
+        
+        //return sections.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = TableSectionHeaderView()
         headerView.titleHeaderTitle.text = self.cellData[0][section] as! String
+        //headerView.titleHeaderTitle.text = sections[section]
         return headerView
     }
     
@@ -311,6 +377,14 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+//        ref.child("categories").child(sections[section]).observe(.value) { (snapshot) in
+//            for child in snapshot.children.allObjects as! [DataSnapshot] {
+//                print("Keys: \(child.key)")
+//            }
+//        }
+        
+        //return self.rows.count
         
         if section == 0 {
             // If the section is the 'Category' section, then return one row
@@ -356,142 +430,6 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
     //Override Status Bar Style
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
-    }
-}
-
-class CoffeeItemCell: UITableViewCell {
-    
-    //MARK: Temporary Data
-    var data: CoffeeData? {
-        didSet {
-            guard let data = data else { return }
-            if let name = data.itemName {
-                itemName.text = name
-            }
-            if let description = data.itemDescription {
-                itemDescription.text = description
-            }
-            if let price = data.itemPrice {
-                itemPrice.text = price
-            }
-            if let strength = data.itemStrength {
-                if strength != "nil" {
-                    coffeeStrength.image = UIImage(imageLiteralResourceName: strength)
-                }
-            }
-        }
-    }
-    
-    let cellView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.setCellStyle()
-        view.clipsToBounds = true
-        return view
-    }()
-    
-    let itemName: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "CircularStd-Book", size: 15)
-        label.textColor = .black
-        //label.backgroundColor = .blue
-        return label
-    }()
-    
-    let itemDescription: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "CircularStd-Book", size: 12)
-        label.textColor = .lightGray
-        label.numberOfLines = 0
-        //label.backgroundColor = .red
-        return label
-    }()
-    
-    let itemPrice: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "CircularStd-Book", size: 15)
-        label.textColor = .gray
-        label.textAlignment = .right
-        //label.backgroundColor = .blue
-        return label
-    }()
-    
-    let addToOrder: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = #imageLiteral(resourceName: "add-to-basket")
-        return image
-    }()
-    
-    let coffeeStrength: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        //image.image = #imageLiteral(resourceName: "coffee-strength")
-        return image
-    }()
-    
-    let tempMask: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 6
-        view.layer.masksToBounds = false
-        return view
-    }()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        setupItemCell()
-    }
-    
-    func setupItemCell() {
-        
-        addSubview(cellView)
-        cellView.addSubview(itemName)
-        cellView.addSubview(itemDescription)
-        cellView.addSubview(itemPrice)
-        cellView.addSubview(addToOrder)
-        cellView.addSubview(coffeeStrength)
-        //Temp Mask
-        cellView.addSubview(tempMask)
-        
-        NSLayoutConstraint.activate([
-            cellView.topAnchor.constraint(equalTo: topAnchor),
-            cellView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-            cellView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            cellView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            
-            itemName.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 20),
-            itemName.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 20),
-            
-            itemDescription.topAnchor.constraint(equalTo: itemName.bottomAnchor, constant: 10),
-            itemDescription.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 20),
-            itemDescription.rightAnchor.constraint(equalTo: cellView.rightAnchor, constant: -100),
-            
-            addToOrder.centerYAnchor.constraint(equalTo: itemName.centerYAnchor),
-            addToOrder.rightAnchor.constraint(equalTo: cellView.rightAnchor, constant: -20),
-            
-            itemPrice.rightAnchor.constraint(equalTo: addToOrder.leftAnchor, constant: -20),
-            itemPrice.centerYAnchor.constraint(equalTo: addToOrder.centerYAnchor),
-            
-            coffeeStrength.topAnchor.constraint(equalTo: itemDescription.bottomAnchor, constant: 10),
-            coffeeStrength.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 20),
-            
-            tempMask.heightAnchor.constraint(equalToConstant: 10),
-            tempMask.centerXAnchor.constraint(equalTo: cellView.centerXAnchor),
-            tempMask.leftAnchor.constraint(equalTo: cellView.leftAnchor),
-            tempMask.rightAnchor.constraint(equalTo: cellView.rightAnchor),
-            tempMask.bottomAnchor.constraint(equalTo: cellView.bottomAnchor)
-        ])
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -595,6 +533,18 @@ class CategoryItemCell: UITableViewCell {
     }
 }
 
+protocol AddToOrderDelegate {
+    
+    func didTapAddToOrder(name: String)
+}
+
+extension MenuTabTableController: AddToOrderDelegate {
+    
+    func didTapAddToOrder(name: String) {
+        print("Add \(name) to the order")
+    }
+}
+
 class BasicItemCell : UITableViewCell {
     
     //MARK: Temporary Data
@@ -645,6 +595,8 @@ class BasicItemCell : UITableViewCell {
         return image
     }()
     
+    var delegate: AddToOrderDelegate?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -673,6 +625,13 @@ class BasicItemCell : UITableViewCell {
             itemPrice.rightAnchor.constraint(equalTo: addToOrder.leftAnchor, constant: -20),
             itemPrice.centerYAnchor.constraint(equalTo: addToOrder.centerYAnchor),
         ])
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addItemToOrder))
+        addToOrder.addGestureRecognizer(tap)
+    }
+    
+    @objc func addItemToOrder() {
+        delegate?.didTapAddToOrder(name: itemName.text!)
     }
     
     required init?(coder: NSCoder) {
