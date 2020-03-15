@@ -10,9 +10,13 @@ import UIKit
 
 struct CoffeeData {
     var itemName: String?
-    var itemPrice: String?
+    var itemPrice: Float!
     var itemDescription: String?
     var itemStrength: String?
+}
+
+struct BasketData {
+    var basketTotal: Float!
 }
 
 //struct BasicData {}

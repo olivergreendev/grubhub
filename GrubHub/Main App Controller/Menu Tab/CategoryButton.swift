@@ -67,6 +67,6 @@ class CategoryButton: UIView {
     
     @objc func handleTap(recognizer: UITapGestureRecognizer) {
         
-        //print(self.title.text!)
+        print(self.cellTitle.text!)
     }
 }

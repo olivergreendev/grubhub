@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseDatabase
 
 extension MenuTabTableController: AddToOrderProtocol {
     
@@ -16,7 +15,7 @@ extension MenuTabTableController: AddToOrderProtocol {
     }
 }
 
-class MenuTabTableController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MenuTabTableController: UIViewController {
     
     let gradientLayer = CAGradientLayer()
     private let customHeader: UIView = {
@@ -34,7 +33,7 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
         label.font = UIFont(name: "CircularStd-Bold", size: 22)
-        label.text = "Costa Coffee"
+        label.text = "Coffee House"
         return label
     }()
     
@@ -91,22 +90,19 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
     
     fileprivate let cellData = [
         ["Categories", "Coffee", "Pastries", "Soft Drinks", "Tea", "Smoothies", "Muffins"],
-        [CoffeeData(itemName: "Espresso", itemPrice: "£2.50", itemDescription: "Espressos are the purest coffee experience you can get, and while the're not for everyone, it can be a truly singular drinking experience.", itemStrength: "coffee-strength-4"),
-        CoffeeData(itemName: "Mocha", itemPrice: "£2.50", itemDescription: "The perfect cure for a chocolate craving, this beverage is 60 ml of espresso, 50 ml of chocolate, and 30 ml of steamed milk.", itemStrength: "coffee-strength-3"),
-        CoffeeData(itemName: "Cappuccino", itemPrice: "£3.00", itemDescription: "This beloved drink is two ounces of espresso topped with another two ounces of steamed milk and finished with two ounces of foamed milk.", itemStrength: "coffee-strength-1"),
-        CoffeeData(itemName: "Latte", itemPrice: "£2.80", itemDescription: "This beverage is a blend of two ounces of espresso and ten ounces of steamed milk. It’s topped with the tiniest hint of foamed milk.", itemStrength: "coffee-strength-1"),
-        CoffeeData(itemName: "Flat White", itemPrice: "£3.20", itemDescription: "With two ounces of espresso to four ounces of steamed milk, this drink may be a little more palatable if you’re not a fan of strong coffee flavor.", itemStrength: "coffee-strength-2")],
-        [CoffeeData(itemName: "Danish Pastry", itemPrice: "£1.80", itemDescription: "Part-baked and fully-baked danish pastries with a delicious & traditional filling.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Butter Croissant", itemPrice: "£1.00", itemDescription: "Available both fully-baked or part-baked – made with a high quantity of butter to deliver a really rich buttery taste.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Mini Selections", itemPrice: "£3.00", itemDescription: "Mini viennois & mini danish selections available as fully-baked or part-baked, delicious treats with morning coffee.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Continental Confectionery", itemPrice: "£3.20", itemDescription: "With consumers looking for new tastes and experiences this range of popular European confectionery will delight your customers!", itemStrength: "coffee-strength-1")],
-        [CoffeeData(itemName: "Coca Cola", itemPrice: "£1.80", itemDescription: "250ml traditional Coca Cola served in a glass bottle.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Fanta: Orange", itemPrice: "£1.40", itemDescription: "250ml Fanta Orange served in a glass bottle.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Pepsi", itemPrice: "£2.10", itemDescription: "250ml traditional Pepsi flavour served in a glass bottle", itemStrength: "coffee-strength-1")],
-        [CoffeeData(itemName: "Green Tea", itemPrice: "£1.20", itemDescription: "", itemStrength: ""), CoffeeData(itemName: "Brown Tea", itemPrice: "£1.20", itemDescription: "", itemStrength: "")], //Tea
-        [CoffeeData(itemName: "Strawberry Supreme", itemPrice: "£2.10", itemDescription: "A delicious combination of milk, whipped cream and fresh strawberries.", itemStrength: ""), CoffeeData(itemName: "Raspbery Twist", itemPrice: "£2.40", itemDescription: "A delicious combination of milk, whipped cream and fresh raspberries.", itemStrength: ""), CoffeeData(itemName: "Lemon Buzz", itemPrice: "£2.50", itemDescription: "A tongue sizzling combination of milk, whipped cream, and freshly squeezed lemon juice and syrup.", itemStrength: "")], //Smoothies
-        [CoffeeData(itemName: "Blueberry Muffin", itemPrice: "£1.20", itemDescription: "", itemStrength: ""), CoffeeData(itemName: "Chocolate Muffin", itemPrice: "£1.40", itemDescription: "", itemStrength: "")] //Muffins
+        [CoffeeData(itemName: "Espresso", itemPrice: 250, itemDescription: "Espressos are the purest coffee experience you can get, and while the're not for everyone, it can be a truly singular drinking experience.", itemStrength: "coffee-strength-4"),
+        CoffeeData(itemName: "Mocha", itemPrice: 250, itemDescription: "The perfect cure for a chocolate craving, this beverage is 60 ml of espresso, 50 ml of chocolate, and 30 ml of steamed milk.", itemStrength: "coffee-strength-3"),
+        CoffeeData(itemName: "Cappuccino", itemPrice: 300, itemDescription: "This beloved drink is two ounces of espresso topped with another two ounces of steamed milk and finished with two ounces of foamed milk.", itemStrength: "coffee-strength-1"),
+        CoffeeData(itemName: "Latte", itemPrice: 280, itemDescription: "This beverage is a blend of two ounces of espresso and ten ounces of steamed milk. It’s topped with the tiniest hint of foamed milk.", itemStrength: "coffee-strength-1"),
+        CoffeeData(itemName: "Flat White", itemPrice: 320, itemDescription: "With two ounces of espresso to four ounces of steamed milk, this drink may be a little more palatable if you’re not a fan of strong coffee flavor.", itemStrength: "coffee-strength-2")],
+        [CoffeeData(itemName: "Danish Pastry", itemPrice: 180, itemDescription: "Part-baked and fully-baked danish pastries with a delicious & traditional filling.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Butter Croissant", itemPrice: 100, itemDescription: "Available both fully-baked or part-baked – made with a high quantity of butter to deliver a really rich buttery taste.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Mini Selections", itemPrice: 300, itemDescription: "Mini viennois & mini danish selections available as fully-baked or part-baked, delicious treats with morning coffee.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Continental Confectionery", itemPrice: 320, itemDescription: "With consumers looking for new tastes and experiences this range of popular European confectionery will delight your customers!", itemStrength: "coffee-strength-1")],
+        [CoffeeData(itemName: "Coca Cola", itemPrice: 180, itemDescription: "250ml traditional Coca Cola served in a glass bottle.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Fanta: Orange", itemPrice: 140, itemDescription: "250ml Fanta Orange served in a glass bottle.", itemStrength: "coffee-strength-1"), CoffeeData(itemName: "Pepsi", itemPrice: 210, itemDescription: "250ml traditional Pepsi flavour served in a glass bottle", itemStrength: "coffee-strength-1")],
+        [CoffeeData(itemName: "Green Tea", itemPrice: 120, itemDescription: "", itemStrength: ""), CoffeeData(itemName: "Brown Tea", itemPrice: 120, itemDescription: "", itemStrength: "")], //Tea
+        [CoffeeData(itemName: "Strawberry Supreme", itemPrice: 210, itemDescription: "A delicious combination of milk, whipped cream and fresh strawberries.", itemStrength: ""), CoffeeData(itemName: "Raspbery Twist", itemPrice: 240, itemDescription: "A delicious combination of milk, whipped cream and fresh raspberries.", itemStrength: ""), CoffeeData(itemName: "Lemon Buzz", itemPrice: 250, itemDescription: "A tongue sizzling combination of milk, whipped cream, and freshly squeezed lemon juice and syrup.", itemStrength: "")], //Smoothies
+        [CoffeeData(itemName: "Blueberry Muffin", itemPrice: 120, itemDescription: "", itemStrength: ""), CoffeeData(itemName: "Chocolate Muffin", itemPrice: 140, itemDescription: "", itemStrength: "")] //Muffins
     ]
     
     var hideSections = false
-    
-    var ref: DatabaseReference!
-    var databaseHandle: DatabaseHandle!
     
     var sections = [String]()
     var rows = [String]()
@@ -115,7 +111,6 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
     
     // ["Espresso": [2: 20]]
     // 2 Espressos, at price '10' each
-    static var basket: [String: [Int: Int]] = [:]
     
     /*
      data = [
@@ -152,75 +147,10 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
         
         view.backgroundColor = .defaultBackground
         
-        //initFirebase()
-        
         setupNavigationBar()
         setupTableLayout()
         customiseNavigationBar()
         customiseTabBar()
-    }
-    
-    private func initFirebase() {
-    
-        //Reference the Firebase Database
-        ref = Database.database().reference()
-        
-        //Get the sections from the database
-        ref.child("categories").observe(.value) { (snapshot) in
-            let info = snapshot.value as! NSDictionary
-            //self.sections = info.allKeys as! [String]
-            
-            //self.emptyDict = info as! Dictionary<String, String>
-            
-            for child in snapshot.children.allObjects as! [DataSnapshot] {
-                //print("Child Keys: \(child.key)")
-                //print("\(child.childSnapshot(forPath: ""))")
-                self.sections.append(child.key)
-                for nestedChild in child.children.allObjects as! [DataSnapshot] {
-                    //print("Nested Child Keys: \(nestedChild.key)")
-                    self.rows.append(nestedChild.key)
-                }
-            }
-            
-            self.mainTable.reloadData()
-            //print(self.sections)
-            //print(self.rows)
-        }
-        
-        //Get the rows from the database
-        ref.child("categories").child("Smoothies").observe(.value) { (snapshot) in
-            let info = snapshot.value as! NSDictionary
-            self.rows = info.allKeys as! [String]
-            self.mainTable.reloadData()
-            //print(self.rows)
-        }
-        
-        /*
-        // Write Data
-        //ref.child("categories/coffee/Oliver").setValue("Green")
-        
-        // Read Data
-        self.ref.child("categories/coffee/cappuccino/description").observeSingleEvent(of: .value) { (snapshot) in
-            let description = snapshot.value as? String
-            //print(description)
-        }
-        
-        self.ref.child("categories/coffee/cappuccino").observeSingleEvent(of: .value) { (snapshot) in
-            let data = snapshot.value as? [String:Any]
-            //print(data)
-        }
-        
-        // Observe Data Changes
-        self.databaseHandle = self.ref.child("categories/coffee").observe(.childAdded) { (snapshot) in
-            let addition = snapshot.value
-            //print(addition)
-        }
-        
-        self.databaseHandle = self.ref.child("categories/coffee").observe(.childChanged) { (snapshot) in
-            let change = snapshot.value
-            //print(change)
-        }
-         */
     }
     
     @objc func hideSection() {
@@ -281,7 +211,6 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
         mainTable.dataSource = self
         
         mainTable.register(CategoryItemCell.self, forCellReuseIdentifier: "categoryCellId")
-        
         mainTable.register(CoffeeItemCell.self, forCellReuseIdentifier: "itemCellId")
         mainTable.register(BasicItemCell.self, forCellReuseIdentifier: "basicCellId")
         mainTable.register(AdvancedItemCell.self, forCellReuseIdentifier: "advancedCellId")
@@ -296,14 +225,16 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
         ])
     }
     
+    //Override Status Bar Style
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+}
+
+extension MenuTabTableController: UITableViewDataSource, UITableViewDelegate {
+
     //TableView Delegates
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-//        let cell: BasicItemCell? = tableView.dequeueReusableCell(withIdentifier: "basicCellId") as? BasicItemCell
-//        cell?.backgroundColor = .clear
-//        cell?.selectionStyle = .none
-//        //cell?.data = self.cellData[indexPath.section][indexPath.row] as! CoffeeData
-//        return cell!
         
         if indexPath.section == 0 {
             let cell: CategoryItemCell? = tableView.dequeueReusableCell(withIdentifier: "categoryCellId") as? CategoryItemCell
@@ -327,6 +258,7 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
             cell?.backgroundColor = .clear
             cell?.selectionStyle = .none
             cell?.data = self.cellData[indexPath.section][indexPath.row] as! CoffeeData
+            cell?.cellDelegate = self
             return cell!
         }
         
@@ -336,7 +268,7 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
             cell?.selectionStyle = .none
             cell?.contentView.isUserInteractionEnabled = false
             cell?.data = self.cellData[indexPath.section][indexPath.row] as! CoffeeData
-            cell?.delegate = self
+            cell?.cellDelegate = self
             return cell!
         }
     }
@@ -426,360 +358,100 @@ class MenuTabTableController: UIViewController, UITableViewDataSource, UITableVi
             return 70
         }
     }
-    
-    //Override Status Bar Style
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
 }
 
-class CategoryItemCell: UITableViewCell {
-    
-    let cell = [
-        CategoryItemData(title: "Coffee", image: "coffee-icon"),
-        CategoryItemData(title: "Pastries", image: "pastries-icon"),
-        CategoryItemData(title: "Soft Drinks", image: "soft-drinks-icon"),
-        CategoryItemData(title: "Tea", image: "default-flag"),
-        CategoryItemData(title: "Smoothies", image: "default-flag"),
-        CategoryItemData(title: "Muffins", image: "default-flag")
-    ]
-    
-    private let cellView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private let scrollView: UIScrollView = {
-        let view = UIScrollView()
-        view.backgroundColor = .clear
-        view.translatesAutoresizingMaskIntoConstraints = false
-        //view.contentSize = CGSize(width: 0, height: 0)
-        view.showsHorizontalScrollIndicator = false
-        return view
-    }()
-    
-    private var stackView: UIStackView = {
-        let view = UIStackView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.distribution = .fill
-        view.axis = .horizontal
-        view.spacing = 10
-        return view
-    }()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        setupCategoryCell()
-    }
-    
-    func setupCategoryCell() {
-        
-        addSubview(cellView)
-        cellView.addSubview(scrollView)
-        scrollView.addSubview(stackView)
-        
-        NSLayoutConstraint.activate([
-            
-            cellView.topAnchor.constraint(equalTo: topAnchor),
-            cellView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-            cellView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            cellView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            
-            scrollView.topAnchor.constraint(equalTo: cellView.topAnchor),
-            scrollView.centerXAnchor.constraint(equalTo: cellView.centerXAnchor),
-            scrollView.widthAnchor.constraint(equalTo: cellView.widthAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: cellView.bottomAnchor),
-            
-            
-            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            stackView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
-            
-            /*
-            stackView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor),
-            stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor)
-             */
-        ])
-        
-        /*
-         if !categoryData.isEmpty {
-             for n in 0...(categoryData.count - 1) {
-                 createMultipleButtons(stackView: stackView, count: n)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ private func initFirebase() {
+ 
+     //Reference the Firebase Database
+     ref = Database.database().reference()
+     
+     //Get the sections from the database
+     ref.child("categories").observe(.value) { (snapshot) in
+         let info = snapshot.value as! NSDictionary
+         //self.sections = info.allKeys as! [String]
+         
+         //self.emptyDict = info as! Dictionary<String, String>
+         
+         for child in snapshot.children.allObjects as! [DataSnapshot] {
+             //print("Child Keys: \(child.key)")
+             //print("\(child.childSnapshot(forPath: ""))")
+             self.sections.append(child.key)
+             for nestedChild in child.children.allObjects as! [DataSnapshot] {
+                 //print("Nested Child Keys: \(nestedChild.key)")
+                 self.rows.append(nestedChild.key)
              }
          }
-         */
-        
-        for n in 0...(cell.count - 1) {
-            createMultipleButtons(stackView: stackView, count: n)
-        }
-    }
-    
-    private func createMultipleButtons(stackView: UIStackView, count: Int) -> UIView {
-        
-        let view = CategoryButton()
-        view.cellTitle.text = cell[count].title
-        view.cellImage.image = UIImage(imageLiteralResourceName: cell[count].image!)
-        stackView.addArrangedSubview(view)
-        return view
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-protocol AddToOrderDelegate {
-    
-    func didTapAddToOrder(name: String)
-}
-
-extension MenuTabTableController: AddToOrderDelegate {
-    
-    func didTapAddToOrder(name: String) {
-        print("Add \(name) to the order")
-    }
-}
-
-class BasicItemCell : UITableViewCell {
-    
-    //MARK: Temporary Data
-    var data: CoffeeData? {
-        didSet {
-            guard let data = data else { return }
-            if let name = data.itemName {
-                itemName.text = name
-            }
-            if let price = data.itemPrice {
-                itemPrice.text = price
-            }
-        }
-    }
-    
-    let cellView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.setCellStyle()
-        view.clipsToBounds = true
-        return view
-    }()
-    
-    let itemName: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "CircularStd-Book", size: 15)
-        label.textColor = .black
-        //label.backgroundColor = .blue
-        return label
-    }()
-    
-    let itemPrice: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "CircularStd-Book", size: 15)
-        label.textColor = .gray
-        label.textAlignment = .right
-        //label.backgroundColor = .blue
-        return label
-    }()
-    
-    let addToOrder: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = #imageLiteral(resourceName: "add-to-basket")
-        return image
-    }()
-    
-    var delegate: AddToOrderDelegate?
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        setupItemCell()
-    }
-    
-    func setupItemCell() {
-        
-        addSubview(cellView)
-        cellView.addSubview(itemName)
-        cellView.addSubview(itemPrice)
-        cellView.addSubview(addToOrder)
-        
-        NSLayoutConstraint.activate([
-            cellView.topAnchor.constraint(equalTo: topAnchor),
-            cellView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-            cellView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            cellView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            
-            itemName.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 20),
-            itemName.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 20),
-            
-            addToOrder.centerYAnchor.constraint(equalTo: itemName.centerYAnchor),
-            addToOrder.rightAnchor.constraint(equalTo: cellView.rightAnchor, constant: -20),
-            
-            itemPrice.rightAnchor.constraint(equalTo: addToOrder.leftAnchor, constant: -20),
-            itemPrice.centerYAnchor.constraint(equalTo: addToOrder.centerYAnchor),
-        ])
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(addItemToOrder))
-        addToOrder.addGestureRecognizer(tap)
-    }
-    
-    @objc func addItemToOrder() {
-        delegate?.didTapAddToOrder(name: itemName.text!)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-class AdvancedItemCell : UITableViewCell {
-    
-    //MARK: Temporary Data
-    var data: CoffeeData? {
-        didSet {
-            guard let data = data else { return }
-            if let name = data.itemName {
-                itemName.text = name
-            }
-            if let description = data.itemDescription {
-                itemDescription.text = description
-            }
-            if let price = data.itemPrice {
-                itemPrice.text = price
-            }
-        }
-    }
-    
-    let cellView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.setCellStyle()
-        view.clipsToBounds = true
-        return view
-    }()
-    
-    let itemName: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "CircularStd-Book", size: 15)
-        label.textColor = .black
-        //label.backgroundColor = .blue
-        return label
-    }()
-    
-    let itemDescription: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "CircularStd-Book", size: 12)
-        label.textColor = .lightGray
-        label.numberOfLines = 0
-        //label.backgroundColor = .red
-        return label
-    }()
-    
-    let itemPrice: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "CircularStd-Book", size: 15)
-        label.textColor = .gray
-        label.textAlignment = .right
-        //label.backgroundColor = .blue
-        return label
-    }()
-    
-    let addToOrder: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = #imageLiteral(resourceName: "add-to-basket")
-        return image
-    }()
-    
-    let tempMask: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 6
-        view.layer.masksToBounds = false
-        return view
-    }()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        setupItemCell()
-    }
-    
-    func setupItemCell() {
-        
-        addSubview(cellView)
-        cellView.addSubview(itemName)
-        cellView.addSubview(itemDescription)
-        cellView.addSubview(itemPrice)
-        cellView.addSubview(addToOrder)
-        //Temp Mask
-        cellView.addSubview(tempMask)
-        
-        NSLayoutConstraint.activate([
-            cellView.topAnchor.constraint(equalTo: topAnchor),
-            cellView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-            cellView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            cellView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            
-            itemName.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 20),
-            itemName.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 20),
-            
-            itemDescription.topAnchor.constraint(equalTo: itemName.bottomAnchor, constant: 10),
-            itemDescription.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 20),
-            itemDescription.rightAnchor.constraint(equalTo: cellView.rightAnchor, constant: -100),
-            
-            addToOrder.centerYAnchor.constraint(equalTo: itemName.centerYAnchor),
-            addToOrder.rightAnchor.constraint(equalTo: cellView.rightAnchor, constant: -20),
-            
-            itemPrice.rightAnchor.constraint(equalTo: addToOrder.leftAnchor, constant: -20),
-            itemPrice.centerYAnchor.constraint(equalTo: addToOrder.centerYAnchor),
-            
-            tempMask.heightAnchor.constraint(equalToConstant: 10),
-            tempMask.centerXAnchor.constraint(equalTo: cellView.centerXAnchor),
-            tempMask.leftAnchor.constraint(equalTo: cellView.leftAnchor),
-            tempMask.rightAnchor.constraint(equalTo: cellView.rightAnchor),
-            tempMask.bottomAnchor.constraint(equalTo: cellView.bottomAnchor)
-        ])
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+         
+         self.mainTable.reloadData()
+         //print(self.sections)
+         //print(self.rows)
+     }
+     
+     //Get the rows from the database
+     ref.child("categories").child("Smoothies").observe(.value) { (snapshot) in
+         let info = snapshot.value as! NSDictionary
+         self.rows = info.allKeys as! [String]
+         self.mainTable.reloadData()
+         //print(self.rows)
+     }
+     
+     /*
+     // Write Data
+     //ref.child("categories/coffee/Oliver").setValue("Green")
+     
+     // Read Data
+     self.ref.child("categories/coffee/cappuccino/description").observeSingleEvent(of: .value) { (snapshot) in
+         let description = snapshot.value as? String
+         //print(description)
+     }
+     
+     self.ref.child("categories/coffee/cappuccino").observeSingleEvent(of: .value) { (snapshot) in
+         let data = snapshot.value as? [String:Any]
+         //print(data)
+     }
+     
+     // Observe Data Changes
+     self.databaseHandle = self.ref.child("categories/coffee").observe(.childAdded) { (snapshot) in
+         let addition = snapshot.value
+         //print(addition)
+     }
+     
+     self.databaseHandle = self.ref.child("categories/coffee").observe(.childChanged) { (snapshot) in
+         let change = snapshot.value
+         //print(change)
+     }
+      */
+ }
+ */
 
 
 

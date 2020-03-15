@@ -10,6 +10,11 @@ import UIKit
 
 class MainViewController: UITabBarController {
     
+    //static var basket: [String: [Int: Int]] = [:]
+    static var basket: [String: Int] = [:] // Item : Qty
+    static var basketTotal: Float = 0
+    static var basketQuantity: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

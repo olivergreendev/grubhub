@@ -13,7 +13,7 @@ class CustomMenuItemCell: UITableViewCell {
     var item: CoffeeData? {
         didSet {
             itemName.text = item?.itemName
-            itemPrice.text = item?.itemPrice
+            itemPrice.text = "£\((item!.itemPrice!/100) as! String)"
             itemDescription.text = item?.itemDescription
         }
     }
