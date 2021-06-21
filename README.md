@@ -1,4 +1,6 @@
-# What is GrubHub?
+# GrubHub
+
+GrubHub is my third, and most proudest iOS piece of work. It was my final year project at University which partnered with a report, resulted in an A- grade.
 
 GrubHub is an eCommerce application that enables users to choose a [participating] coffee shop within a certain radius, and place an order remotely.
 
